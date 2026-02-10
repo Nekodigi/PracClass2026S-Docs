@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>テクノセミ 2026 Spring — 講義資料</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Helvetica Neue', 'Noto Sans JP', sans-serif; background: #f5f5f7; color: #1d1d1f; }
+    .container { max-width: 720px; margin: 0 auto; padding: 48px 24px; }
+    h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+    .subtitle { font-size: 14px; color: #86868b; margin-bottom: 40px; }
+    .card-list { display: flex; flex-direction: column; gap: 12px; }
+    a.card {
+      display: flex; align-items: center; gap: 16px;
+      background: #fff; border-radius: 12px; padding: 20px 24px;
+      text-decoration: none; color: inherit;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    a.card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+    .card-week {
+      font-size: 11px; font-weight: 700; color: #fff; background: #0071e3;
+      border-radius: 6px; padding: 4px 10px; white-space: nowrap;
+    }
+    .card-week.appendix { background: #6e6e73; }
+    .card-title { font-size: 16px; font-weight: 600; }
+    .card-desc { font-size: 12px; color: #86868b; margin-top: 2px; }
+    footer { margin-top: 48px; font-size: 12px; color: #86868b; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>テクノセミ 2026 Spring</h1>
+    <p class="subtitle">講義資料一覧</p>
+    <div class="card-list">
+      <a class="card" href="html/W1_kickoff.html">
+        <span class="card-week">W1</span>
+        <div>
+          <div class="card-title">キックオフ</div>
+          <div class="card-desc">プログラム概要・AI時代のモノづくり・開発環境</div>
+        </div>
+      </a>
+      <a class="card" href="html/W1_appendix_qa.html">
+        <span class="card-week appendix">W1 Appendix</span>
+        <div>
+          <div class="card-title">社会課題 × テクノロジー Q&A</div>
+          <div class="card-desc">17の社会課題テーマ別アドバイス・技術ガイド・参加ガイド</div>
+        </div>
+      </a>
+      <a class="card" href="html/W2_value.html">
+        <span class="card-week">W2</span>
+        <div>
+          <div class="card-title">価値を生み出す</div>
+          <div class="card-desc">ユーザー中心設計・プロトタイピング・フィードバック</div>
+        </div>
+      </a>
+      <a class="card" href="html/W3_database_ai.html">
+        <span class="card-week">W3</span>
+        <div>
+          <div class="card-title">データベース × AI</div>
+          <div class="card-desc">データ設計・Supabase・AI連携</div>
+        </div>
+      </a>
+      <a class="card" href="html/W4_sensors.html">
+        <span class="card-week">W4</span>
+        <div>
+          <div class="card-title">センサー × IoT</div>
+          <div class="card-desc">ESP32・センサー活用・スマホアプリ化</div>
+        </div>
+      </a>
+      <a class="card" href="html/W5_deliver.html">
+        <span class="card-week">W5</span>
+        <div>
+          <div class="card-title">届ける</div>
+          <div class="card-desc">デプロイ・プレゼンテーション・発表準備</div>
+        </div>
+      </a>
+    </div>
+    <footer>&copy; 2026 OLIENT TECH Inc.</footer>
+  </div>
+</body>
+</html>

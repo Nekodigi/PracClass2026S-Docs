@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 2: 価値を最大化する — 実践教育プログラム 2026 Spring</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="viewer-bar no-print">
+    <span class="viewer-title">W2 価値を最大化する</span>
+    <span class="viewer-meta">OLIENT TECH 2026 Spring</span>
+    <button class="viewer-pdf-btn" onclick="exportPDF('W2_value.pdf')" title="PDFファイルとしてダウンロードします">&#x2913; PDF保存</button>
+  </div>
+
+  <!-- ======== Cover Page ======== -->
+  <div class="cover-page">
+    <div class="cover-bg">
+      <img src="../images/a4-vertical/mineral/section_pyrite_mirror.png" alt="">
+    </div>
+    <div class="cover-overlay"></div>
+    <div class="cover-content">
+      <p class="cover-program">OLIENT TECH 実践教育プログラム 2026 Spring</p>
+      <p class="cover-week">WEEK 2</p>
+      <h1 class="cover-title">価値を最大化する</h1>
+      <p class="cover-subtitle">自己満足で終わらない、ユーザーにとって価値の高い作品作りのコツと、最小労力で実現するための技術選定</p>
+      <div class="cover-meta">
+        <span>講師: 上津原 和弘</span>
+        <span>2026 Spring</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-body paged">
+
+  <!-- ======== Page 1: Header + 導入 + 誰のために + カスタマージャーニー ======== -->
+  <!-- ~876px: header 170 + section(h2 75 + p 94 + p 66) 263 + section(h2 75 + h3 48 + p 66 + callout 150 + h4 38 + p 66) 471 -->
+  <div class="page">
+    <header class="doc-header">
+      <p class="program-label">OLIENT TECH 実践教育プログラム 2026 Spring</p>
+      <h1>価値を最大化する</h1>
+      <p class="subtitle">自己満足で終わらない、ユーザーにとって価値の高い作品作りのコツと、最小労力で実現するための技術選定</p>
+      <div class="meta">
+        <span>Week 2</span>
+        <span>|</span>
+        <span>講師: 上津原 和弘</span>
+      </div>
+    </header>
+
+    <section>
+      <h2>自己満足で終わっていませんか？</h2>
+      <p>
+        自分が作りたいものを作る。それ自体は悪いことではありません。しかし、完成した作品を誰かに見せたとき「すごいね」と言われるだけで終わっていないでしょうか。技術的に優れていても、誰の課題も解決しない作品は「自己満足」の域を出ません。
+      </p>
+      <p>
+        本講義では、<strong>誰かにとって本当に価値のある作品</strong>を生み出すための考え方と、限られたリソースの中で最大の成果を出すための技術選定について学びます。
+      </p>
+    </section>
+
+    <section>
+      <h2>価値の最大化 — 喜んでもらえる作品を作る</h2>
+
+      <h3>誰のために作品を作ろうか</h3>
+      <p>
+        本当にあなたの力を必要としているのは、<strong>あなたの得意なことができない人</strong>です。ペルソナは、普段出会うことのない人かもしれません。心から欲しいと思ってもらえる作品を作るには、その人のことを細かく知る必要があります。
+      </p>
+
+      <div class="callout tip">
+        <p class="callout-title">インタビューで理解を深める</p>
+        <p>
+          想定ユーザーへのインタビューは、思い込みを壊す最も効果的な手段です。実際に話を聞くことで、ユーザーが本当に困っていること、そして自分では気づかなかったニーズが見えてきます。
+        </p>
+      </div>
+
+      <h4>カスタマージャーニーを描く</h4>
+      <p>
+        ユーザーが「日常的に抱えている問題」や「取る行動」を推測できれば、作品が「本当に使われるのか」「本当に課題解決につながるのか」を事前に予測できます。
+      </p>
+    </section>
+  </div>
+
+  <!-- ======== Page 2: 商業的成功 + 二度作られる + two-col + p ======== -->
+  <!-- ~480px: callout 180 + h3 48 + two-col 158 + p 66 + section-margin 28 -->
+  <div class="page">
+    <section>
+      <div class="callout info">
+        <p class="callout-title">商業的成功の原理</p>
+        <p>
+          多くのお金を払ってでも解決したい問題を、それより安い金額で解決する。その差額が利益になります。つまり、ユーザーが感じる「課題の深刻さ」こそが価値の源泉です。
+        </p>
+      </div>
+
+      <h3>全てのものは二度作られる</h3>
+
+      <div class="two-col">
+        <div>
+          <h4 class="mt-0">第一の創造 <span class="tag">本質</span></h4>
+          <p class="mb-0">
+            企画書やデザイン、頭の中のイメージ。完成像を決めるフェーズであり、ここが間違っていれば第二の創造は必ず失敗します。<strong>「企画やデザイン」こそが「モノづくり」の土台</strong>です。
+          </p>
+        </div>
+        <div>
+          <h4 class="mt-0">第二の創造 <span class="tag blue">実行</span></h4>
+          <p class="mb-0">
+            素材加工やコード記述。プログラミングは第一の創造に従っているだけです。完成像が決まっていなければ、どれだけコードを書いても価値ある作品にはなりません。
+          </p>
+        </div>
+      </div>
+
+      <p>
+        多くの人は「第二の創造」に時間を費やしますが、成果物の質を決定づけるのは「第一の創造」です。企画書を丁寧に作ることが、結果的に最短ルートになります。
+      </p>
+    </section>
+  </div>
+
+  <!-- ======== Page 3: 企画書テンプレート ======== -->
+  <!-- ~574px: h3 48 + callout(16+14+32+12+table~382+12+14+16) ~498 + section-margin 28 -->
+  <div class="page">
+    <section>
+      <h3>企画書のテンプレート</h3>
+
+      <div class="callout">
+        <p class="callout-title">企画書に含めるべき要素</p>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 25%;">項目</th>
+              <th>記載例</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>ターゲット</strong></td>
+              <td>最新技術導入の遅れと生産性低下を自覚している中堅企業</td>
+            </tr>
+            <tr>
+              <td><strong>解決したい課題</strong></td>
+              <td>コミュニケーションコスト、属人化、手動作業</td>
+            </tr>
+            <tr>
+              <td><strong>コア機能</strong><br><span class="text-small text-muted">優先順位順</span></td>
+              <td>
+                <ol>
+                  <li>既存プロジェクトから標準化ドキュメントの自動作成</li>
+                  <li>更新自動検出</li>
+                  <li>カスタマイズ</li>
+                </ol>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>利用フロー</strong></td>
+              <td>ドキュメント化したいファイルのURL入力 → Driveにドキュメント作成 → 質問や追記 → 新規メンバーに共有</td>
+            </tr>
+            <tr>
+              <td><strong>開発スケジュール</strong></td>
+              <td>コア機能（1週間） → 補助機能（1週間） → リリース対応（1週間） → バグ修正&amp;改善（1週間）</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <!-- ======== Page 4: 技術選定 — 質を最優先 + 質を実現 + two-col ======== -->
+  <!-- ~634px: section(h2 35 + h3 48 + p 66 + callout 186 + h3 48 + p 66 + two-col 185) -->
+  <div class="page">
+    <section>
+      <h2>最小労力で実現する — 技術選定</h2>
+
+      <h3>「質」を最優先すべき理由</h3>
+      <p>
+        1番いいものと2番目があったら、わざわざ2番目を選ぶ人はいません。「たった一つ」「ニッチ」でもいいので、世界で一番を取ることが重要です。
+      </p>
+
+      <div class="callout">
+        <p class="callout-title">利益の方程式</p>
+        <p>
+          <strong>利益 = 「価値」 &times; 「人数」 &times; 「時間」</strong><br>
+          この3つの変数は全て「質」に左右されます。質が高ければ価値が上がり、人が集まり、長く使われます。質こそが成果の根幹です。
+        </p>
+      </div>
+
+      <h3>「質」を実現する方法</h3>
+      <p>
+        プロジェクトには<strong>「コスト」「時間」「機能数」の3つの制約</strong>が存在します。どれかを優先すれば他を犠牲にする必要があり、全てを優先しようとすれば「質」が犠牲になります。
+      </p>
+
+      <div class="two-col">
+        <div>
+          <h4 class="mt-0">3つの制約理論</h4>
+          <ul>
+            <li><strong>コスト</strong> — 使える資金・リソース</li>
+            <li><strong>時間</strong> — 締め切り・開発期間</li>
+            <li><strong>機能数</strong> — 実装するスコープ</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="mt-0">個人開発の現実</h4>
+          <p class="mb-0">
+            個人開発ではコストと時間に上限があります。したがって、<strong>機能数を制限しなければ質を確保できません</strong>。「全部入り」は質の敵です。
+          </p>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <!-- ======== Page 5: 目的を達成 + 多めに見積もろう ======== -->
+  <!-- ~791px: section(h3 48 + p 66 + callout 269 + h3 48 + p 66 + ul 108 + callout 186) -->
+  <div class="page">
+    <section>
+      <h3>「目的」を達成できる技術を選択する</h3>
+      <p>
+        ノコギリで釘は打てません。どんなに優れた技術でも、目的に合わなければ意味がありません。技術選定の前に、達成すべき要件を明確にしましょう。
+      </p>
+
+      <div class="callout tip">
+        <p class="callout-title">技術選定の判断基準を事前に決める</p>
+        <ul>
+          <li>「○○が実現可能であること」 — 必須機能の実現性</li>
+          <li>「遅延○秒以内」 — パフォーマンス要件</li>
+          <li>「シェア○位以内」 — コミュニティの成熟度・情報量</li>
+        </ul>
+        <p>
+          基準を先に決めておけば、感覚やトレンドに流されず合理的な選択ができます。
+        </p>
+      </div>
+
+      <h3>多めに見積もろう</h3>
+      <p>
+        スケジュール通りに進むことはほぼありません。予期しないバグ、仕様変更、学習コストなど、遅延要因は常に存在します。
+      </p>
+      <ul>
+        <li><strong>最低でも2倍の期間</strong>を見積もる</li>
+        <li><strong>プランB</strong>を用意しておくことも重要 — メインの技術が使えなかった場合の代替手段を考えておく</li>
+      </ul>
+
+      <div class="callout warning">
+        <p class="callout-title">見積もりの鉄則</p>
+        <p>
+          「これくらいでできるだろう」という楽観的な見積もりは、ほぼ確実に裏切られます。余裕を持った計画が、結果的にスケジュール通りの完成を可能にします。
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <!-- ======== Page 6: 技術カタログ — デザイン + Web + 地図 ======== -->
+  <!-- ~648px: section(h3 48 + p 66 + h4 38 + ul 130 + h4 38 + ul 160 + h4 38 + ul 130) -->
+  <div class="page">
+    <section>
+      <h3>技術カタログ — 目的別に選ぶ</h3>
+      <p>
+        以下は、個人開発やプロトタイプ制作でよく使われる技術・サービスの一覧です。全てを使う必要はありません。<strong>自分のプロジェクトの目的に合ったものだけを選択</strong>してください。
+      </p>
+
+      <h4>デザイン・プロトタイプ</h4>
+      <ul>
+        <li><a href="https://www.figma.com/" target="_blank">Figma</a> — UIデザインとプロトタイプ作成の定番ツール。チーム共同編集にも対応</li>
+        <li><a href="https://www.canva.com/" target="_blank">Canva</a> — テンプレートベースのデザインツール。スライドやポスター作成に最適</li>
+        <li><a href="https://v0.dev/" target="_blank">v0</a> — プロンプトからUIコンポーネントを生成するAIツール</li>
+      </ul>
+
+      <h4>Webアプリ・ホスティング</h4>
+      <ul>
+        <li><a href="https://nextjs.org/" target="_blank">Next.js</a> — Reactベースのフルスタックフレームワーク。SSR/SSG対応で高速</li>
+        <li><a href="https://vercel.com/" target="_blank">Vercel</a> — フロントエンドのデプロイプラットフォーム。Next.jsとの相性が抜群</li>
+        <li><a href="https://firebase.google.com/" target="_blank">Firebase</a> — Googleが提供するBaaS。認証・データベース・ホスティングを一括提供</li>
+        <li><a href="https://supabase.com/" target="_blank">Supabase</a> — オープンソースのFirebase代替。PostgreSQLベースで柔軟性が高い</li>
+      </ul>
+
+      <h4>地図・位置情報</h4>
+      <ul>
+        <li><a href="https://developers.google.com/maps" target="_blank">Google Maps Platform</a> — 地図表示・ジオコーディング・経路検索の定番API</li>
+        <li><a href="https://www.mapbox.com/" target="_blank">Mapbox</a> — カスタマイズ性が高い地図プラットフォーム。デザイン重視のプロジェクトに</li>
+        <li><a href="https://leafletjs.com/" target="_blank">Leaflet</a> — 軽量なオープンソース地図ライブラリ。無料で利用可能</li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- ======== Page 7: 技術カタログ — AI + ブラウザAPI + IoT + コツ ======== -->
+  <!-- ~790px: section(h4 38 + ul 250 + h4 38 + ul 110 + h4 38 + ul 130 + callout 186) -->
+  <div class="page">
+    <section>
+      <h4>AI・機械学習</h4>
+      <ul>
+        <li><a href="https://platform.openai.com/" target="_blank">ChatGPT API (OpenAI)</a> — テキスト生成・要約・対話などの汎用AI API</li>
+        <li><a href="https://ai.google.dev/" target="_blank">Gemini API</a> — Googleのマルチモーダル AI。テキスト・画像・動画を統合的に扱える</li>
+        <li><a href="https://ai.google.dev/edge/mediapipe/solutions/guide" target="_blank">MediaPipe</a> — リアルタイムの顔認識・手指検出・姿勢推定などのオンデバイスAI</li>
+        <li><a href="https://teachablemachine.withgoogle.com/" target="_blank">Teachable Machine</a> — ブラウザ上でノーコードで機械学習モデルを作成できるツール</li>
+        <li><a href="https://huggingface.co/" target="_blank">Hugging Face</a> — オープンソースモデルのハブ。様々な事前学習済みモデルを利用可能</li>
+        <li><a href="https://www.tensorflow.org/js" target="_blank">TensorFlow.js</a> — ブラウザ上で機械学習モデルを実行できるJavaScriptライブラリ</li>
+      </ul>
+
+      <h4>ブラウザAPI・PWA</h4>
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API" target="_blank">Web Speech API</a> — ブラウザ内蔵の音声認識・音声合成API。追加コスト不要</li>
+        <li><a href="https://web.dev/progressive-web-apps/" target="_blank">PWA (Progressive Web Apps)</a> — Webアプリをネイティブアプリのようにインストール可能にする技術</li>
+      </ul>
+
+      <h4>IoT・ハードウェア</h4>
+      <ul>
+        <li><a href="https://www.espressif.com/en/products/socs/esp32" target="_blank">ESP32</a> — Wi-Fi/Bluetooth内蔵の低コストマイコン。IoTプロジェクトの定番</li>
+        <li><a href="https://www.arduino.cc/" target="_blank">Arduino</a> — 初心者向けマイコンプラットフォーム。豊富なライブラリとコミュニティ</li>
+        <li><a href="https://m5stack.com/" target="_blank">M5Stack</a> — ディスプレイ・バッテリー内蔵のESP32モジュール。プロトタイプに最適</li>
+      </ul>
+
+      <div class="callout tip">
+        <p class="callout-title">技術選定のコツ</p>
+        <p>
+          まずは<strong>無料枠が充実しているサービス</strong>を選びましょう。Firebase、Supabase、Vercelなどは個人開発に十分な無料枠を提供しています。また、日本語の情報が多い技術を選ぶと学習コストを抑えられます。
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <!-- ======== Page 8: クロージング + 課題 ======== -->
+  <!-- ~675px: section(h2 75 + p 38 + callout 186) 299 + task-box 376 -->
+  <div class="page">
+    <section>
+      <h2>クロージング — プチアイデアソン</h2>
+      <p>
+        講義の最後に、<a href="https://www.figma.com/" target="_blank">FigJam</a>を使った20分間のライブアイデアソンを行います。
+      </p>
+
+      <div class="callout info">
+        <p class="callout-title">アイデアソンのお題</p>
+        <p>
+          <strong>「これから作ってみたい作品をなるべく多く出してみよう」</strong><br>
+          質より量を意識して、思いつくままに書き出してください。企画書のテンプレートを意識しながら、ターゲットと課題もセットで考えてみましょう。
+        </p>
+      </div>
+    </section>
+
+    <div class="task-box">
+      <h3>今週の課題</h3>
+      <p><span class="tag">必須</span> <strong>企画書を提出しよう</strong></p>
+      <p>
+        本講義で紹介したテンプレートを参考に、自分の作品の企画書を作成してください。ターゲット、課題、コア機能、利用フロー、開発スケジュールを含めること。
+      </p>
+      <h4>提出方法</h4>
+      <ol class="steps">
+        <li>企画書を作成する（Googleドキュメント、Notion など形式は自由）</li>
+        <li>課題提出チャンネルにてURLを共有する（後から更新可）</li>
+        <li>課題告知メッセージに<strong>リアクション</strong>を付ける（確認済みの証として必須）</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- ======== Page 9: Appendix — 学習リソース ======== -->
+  <!-- ~415px: appendix(margin-top 28 + padding-top 14 + h2 70 + h3 48 + h4 38 + ul 130 + h4 38 + ul 49) -->
+  <div class="page">
+    <section class="appendix">
+      <h2>Appendix: もっと知りたい人へ</h2>
+
+      <h3>学習リソース</h3>
+
+      <h4>書籍</h4>
+      <ul>
+        <li><strong>ISSUE DRIVEN</strong> — 「解の価値」と「解の質」について深く学べる原著</li>
+        <li><strong>7つの習慣</strong> — 「全てのものは二度作られる（第二の創造）」の考え方の原著</li>
+        <li><strong>これから始めるFigma</strong> — デザインツール <a href="https://www.figma.com/" target="_blank">Figma</a> の入門書。企画やデザインの実践に</li>
+      </ul>
+
+      <h4>オンラインコース</h4>
+      <ul>
+        <li><strong>Google Project Management</strong> — 3つの制約理論を含むプロジェクト管理の体系的な教材</li>
+      </ul>
+
+    </section>
+  </div>
+
+  <!-- ======== Page 10: 用語解説 + Footer ======== -->
+  <!-- ~684px: appendix(margin-top 28 + padding-top 14 + h3 48 + table 512) 602 + footer 82 -->
+  <div class="page">
+    <section class="appendix">
+      <h3>用語解説</h3>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 20%;">用語</th>
+            <th>解説</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>ペルソナ</strong></td>
+            <td>作品の理想的なユーザー像。年齢、職業、課題、行動パターンなどを具体的に設定した架空の人物。</td>
+          </tr>
+          <tr>
+            <td><strong>ニーズ</strong></td>
+            <td>ユーザーが抱える欲求や必要性。顕在ニーズ（自覚している）と潜在ニーズ（自覚していない）がある。</td>
+          </tr>
+          <tr>
+            <td><strong>ニッチ</strong></td>
+            <td>大手がカバーしていない、特定の狭い市場領域。小規模でも「一番」を取りやすい。</td>
+          </tr>
+          <tr>
+            <td><strong>シェア</strong></td>
+            <td>市場全体に占める割合。技術選定では、コミュニティの大きさや情報量の指標として参考にする。</td>
+          </tr>
+          <tr>
+            <td><strong>ターゲット</strong></td>
+            <td>作品が価値を届ける対象となるユーザー層。ペルソナよりも広い概念。</td>
+          </tr>
+          <tr>
+            <td><strong>デザイン</strong></td>
+            <td>見た目だけでなく、ユーザー体験全体の設計を指す。課題解決の方法を「設計」すること。</td>
+          </tr>
+          <tr>
+            <td><strong>プロジェクト</strong></td>
+            <td>明確な目標と期限を持つ、一時的な取り組み。日常業務（オペレーション）とは区別される。</td>
+          </tr>
+          <tr>
+            <td><strong>企画書</strong></td>
+            <td>作品の目的、ターゲット、機能、スケジュールなどをまとめた文書。「第一の創造」の成果物。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer class="doc-footer">
+      <p>&copy; 2026 OLIENT TECH Inc. All rights reserved.</p>
+      <p>本資料は実践教育プログラム 2026 Spring の受講者向けに作成されたものです。</p>
+    </footer>
+  </div>
+
+  </div><!-- .doc-body.paged -->
+
+  <script src="pdf-export.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 1: キックオフ — 実践教育プログラム 2026 Spring</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="viewer-bar no-print">
+    <span class="viewer-title">W1 キックオフ — AI駆動開発入門</span>
+    <span class="viewer-meta">OLIENT TECH 2026 Spring</span>
+    <button class="viewer-pdf-btn" onclick="exportPDF('W1_kickoff.pdf')" title="PDFファイルとしてダウンロードします">&#x2913; PDF保存</button>
+  </div>
+
+  <!-- ======== Cover Page ======== -->
+  <div class="cover-page">
+    <div class="cover-bg">
+      <img src="../images/a4-vertical/abstarct/particles_aurora.png" alt="">
+    </div>
+    <div class="cover-overlay"></div>
+    <div class="cover-content">
+      <p class="cover-program">OLIENT TECH 実践教育プログラム 2026 Spring</p>
+      <p class="cover-week">WEEK 1</p>
+      <h1 class="cover-title">キックオフ</h1>
+      <p class="cover-subtitle">Claude CodeとPythonを使った開発プロセスの自動化と、クラウドを使った本格的なアーキテクチャの習得</p>
+      <div class="cover-meta">
+        <span>講師: 上津原 和弘</span>
+        <span>2026 Spring</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-body paged">
+
+  <!-- ======== Page 1: Header + はじめに + プログラムの流れ(前半) ======== -->
+  <div class="page">
+    <header class="doc-header">
+      <p class="program-label">OLIENT TECH 実践教育プログラム 2026 Spring</p>
+      <h1>キックオフ</h1>
+      <p class="subtitle">Claude CodeとPythonを使った開発プロセスの自動化と、クラウドを使った本格的なアーキテクチャの習得</p>
+      <div class="meta">
+        <span>Week 1</span>
+        <span>|</span>
+        <span>講師: 上津原 和弘</span>
+      </div>
+    </header>
+
+    <section>
+      <h2>1. はじめに</h2>
+      <p>皆さんは高専にどのような期待をして入学しましたか？</p>
+      <p>新しい技術を身につけたい、何かものを作りたい、将来の仕事に活かしたい――そうした想いを持って入学された方が多いのではないでしょうか。このプログラムでは、最先端のAIツールとクラウド技術を使って、皆さんのアイデアを実際に動くプロダクト（Webサービスやアプリ）として形にしていきます。プログラミング経験がなくても大丈夫です。AIがコードの大部分を書いてくれる時代だからこそ、「何を作りたいか」というアイデアが最も重要になります。</p>
+
+      <div class="callout tip">
+        <p class="callout-title">それ、実現できるかもしれません</p>
+        <p>AIとクラウドの進化により、個人でもプロ級のサービスを短期間で構築できる時代になりました。このプログラムを通じて、その力を体感してください。</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- ======== Page 2: プログラムの流れ ======== -->
+  <div class="page">
+    <section>
+      <h2>2. プログラムの流れ</h2>
+      <p>本プログラムは全5週間で構成され、3つのフェーズに分かれています。毎週の講義と課題を通じて段階的にスキルを身につけ、最終的に実際に公開できるプロダクトを完成させます。</p>
+
+      <div class="two-col">
+        <div>
+          <h4>Phase 1 <span class="tag">Week 1–2</span></h4>
+          <p class="bold">プロトタイプと企画</p>
+          <p>本当に意味のあるアイデアを厳選し、爆速で実現する。AIコード生成ツールを使って、アイデアを素早くプロトタイプに落とし込みます。</p>
+        </div>
+        <div>
+          <h4>Phase 2 <span class="tag blue">Week 3–4</span></h4>
+          <p class="bold">開発とデプロイ</p>
+          <p>最先端技術を使って高度な機能も難なく実現する。クラウドサービスやAPIを活用して、本格的なアーキテクチャを構築します。</p>
+        </div>
+      </div>
+      <div class="two-col">
+        <div>
+          <h4>Phase 3 <span class="tag green">Week 5</span></h4>
+          <p class="bold">ユーザー体験と改善</p>
+          <p>作品をユーザーに届け、フィードバックを元にもっと良くする。実際のユーザーに使ってもらい、改善を繰り返します。</p>
+        </div>
+        <div>
+          <div class="callout info mt-0" style="margin: 0;">
+            <p class="callout-title">ゴール</p>
+            <p class="mb-0">5週間後には、自分のアイデアを形にし、公開・共有できるWebサービスが完成します。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ======== Page 3: AI駆動開発入門 ======== -->
+  <div class="page">
+    <section>
+      <h2>3. AI駆動開発入門</h2>
+
+      <h3>開発事例紹介: テクノン</h3>
+      <p>AI駆動開発の実例として、<a href="https://shinro-check.olienttech.com/" target="_blank">テクノン</a>を紹介します。このサービスはAIツールを活用して短期間で開発されたものです。今回のプログラムでも同様のアプローチでプロダクトを作っていきます。</p>
+
+      <h3>v0を使ったプロトタイピング</h3>
+      <p><span class="tag blue"><a href="https://v0.dev/" style="color:inherit;border:none;" target="_blank">v0</a></span> は<a href="https://vercel.com/" target="_blank">Vercel</a>社が開発するAIコード生成ツールです。自然言語で指示するだけで、動作するWebアプリケーションを生成できます。以下の手順で実際に体験してみましょう。</p>
+
+      <ol class="steps">
+        <li><strong>v0にアクセスする:</strong> <a href="https://v0.dev" target="_blank">v0.dev</a> にアクセスし、アカウントを作成またはログインします。</li>
+        <li><strong>プロンプトを入力する:</strong> チャット欄に「電卓アプリを作って」と入力します。無料版は一日の利用回数に上限があるため、<strong>必ず v0 Mini を選択</strong>してください。</li>
+        <li><strong>生成結果を確認する:</strong> 数十秒待つと、右側のプレビューエリアにアプリが表示されます。修正したい箇所があればチャットから追加の指示を送ることができます。</li>
+        <li><strong>制作物を公開・共有する:</strong> <code>Publish</code> > <code>Publish to Production</code> で公開します。<code>Visit Site</code> ボタンで正常に動作することを確認した後、DiscordでURLを共有してください。</li>
+      </ol>
+    </section>
+  </div>
+
+  <!-- ======== Page 3: AI駆動開発入門(続き) + クラウド入門 ======== -->
+  <div class="page">
+    <h3>[任意] ソースコードの確認と追加開発</h3>
+    <p>生成されたコードはエディター画面に切り替えることで確認できます。<a href="https://github.com/" target="_blank">GitHub</a>と連携してリポジトリに保存し、ローカル環境で追加開発を行うことも可能です。</p>
+    <div class="two-col">
+      <div>
+        <h4>ローカル開発環境の選択肢</h4>
+        <ul>
+          <li><span class="tag">VSCode</span> + <span class="tag green">Gemini CLI</span></li>
+          <li><span class="tag"><a href="https://www.cursor.com/" style="color:inherit;border:none;" target="_blank">Cursor</a></span> + <span class="tag blue"><a href="https://docs.anthropic.com/en/docs/claude-code/overview" style="color:inherit;border:none;" target="_blank">Claude Code</a></span></li>
+        </ul>
+      </div>
+      <div>
+        <h4>[任意] デバッグのヒント</h4>
+        <p class="text-small">v0にも限界があります（GPT-5の方が賢い場合がある、変更が強制的に適用される、コストが高い等）。問題が解決しない場合は <span class="tag"><a href="https://chat.openai.com/" style="color:inherit;border:none;" target="_blank">ChatGPT</a></span> や <span class="tag"><a href="https://www.cursor.com/" style="color:inherit;border:none;" target="_blank">Cursor</a></span> を併用しましょう。</p>
+      </div>
+    </div>
+
+    <section>
+      <h2>4. クラウド入門</h2>
+
+      <h3>なぜWeb開発はしんどいのか？</h3>
+      <p>Webサービスを個人で作って運用するには、サーバーの管理やデータの保存など多くの技術的課題があります。しかし、クラウドサービス（インターネット経由で使える外部のサービス）を活用すれば、その負担を大幅に軽減できます。</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>課題</th>
+            <th>説明</th>
+            <th>クラウドでの解決策</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="bold">一時的な大量アクセス</td>
+            <td>急なアクセス増加に自前のサーバーで対応するのは困難</td>
+            <td><span class="tag blue">Cloud Functions</span> <span class="tag blue">Cloud Run</span> などでオートスケール</td>
+          </tr>
+          <tr>
+            <td class="bold">一生サポートし続ける</td>
+            <td>データの管理・保守を自分で行い続けるのは現実的でない</td>
+            <td><span class="tag blue">Firestore</span> <span class="tag blue">Cloud SQL</span> などのマネージドDBに運用責任を移転</td>
+          </tr>
+          <tr>
+            <td class="bold">作る機能が多すぎる</td>
+            <td>画像認識、自然言語処理など全てを自作するのは非効率</td>
+            <td><span class="tag blue">Mediapipe</span> <span class="tag blue">OpenCV</span> <span class="tag blue">OpenAI API</span> などの既存サービスを活用</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout tip">
+        <p class="callout-title">まとめ: クラウドを使って楽をしよう</p>
+        <p>全てを自分で作る必要はありません。クラウドサービスやAPIを賢く組み合わせることで、少ない労力で高品質なサービスを構築できます。</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- ======== Page 4: AI活用入門 ======== -->
+  <div class="page">
+    <section>
+      <h2>5. AI活用入門</h2>
+
+      <h3>AIの進化と現在地</h3>
+      <p>近年、AIは様々な分野で人間の能力に匹敵し始めています。特に大規模言語モデル（LLM：文章を理解・生成するAI）は、GPQAベンチマークなどの専門試験で人間の専門家を上回る精度を達成し、AGI（汎用人工知能）の実現が現実味を帯びてきました。</p>
+      <p>AIが人間と遜色のない結果を出せるようになった今、<strong>使わない理由がなくなりつつあります</strong>。Google検索、OS、Officeスイートなど、皆さんが日常的に使うツールにもAIが組み込まれる時代です。</p>
+
+      <h3>主力AIツール紹介</h3>
+      <p>本プログラムで活用する主要なAIツールを紹介します。それぞれ得意分野が異なるため、作りたいものに合わせて使い分けましょう。すべて無料プランまたはプログラム提供枠で利用できます。</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>用途</th>
+            <th>ツール名</th>
+            <th>特徴</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>画像生成</td>
+            <td><span class="tag"><a href="https://gemini.google.com/" style="color:inherit;border:none;" target="_blank">Nano Banana Pro (Gemini)</a></span></td>
+            <td>日本語テキスト出力も完璧な画像生成AI</td>
+          </tr>
+          <tr>
+            <td>コードエディタ</td>
+            <td><span class="tag blue"><a href="https://www.cursor.com/" style="color:inherit;border:none;" target="_blank">Cursor</a></span></td>
+            <td>複数のAIモデルを切り替えて利用可能なエディタ</td>
+          </tr>
+          <tr>
+            <td>コード生成</td>
+            <td><span class="tag blue"><a href="https://docs.anthropic.com/en/docs/claude-code/overview" style="color:inherit;border:none;" target="_blank">Claude Code</a></span></td>
+            <td>圧倒的なコード生成精度を誇るCLIツール</td>
+          </tr>
+          <tr>
+            <td>図解作成</td>
+            <td><span class="tag green">Napkin AI</span></td>
+            <td>テキストから図解・インフォグラフィックを自動生成</td>
+          </tr>
+          <tr>
+            <td>動画生成</td>
+            <td><span class="tag">Sora</span></td>
+            <td>無料かつ無制限。15〜25秒の動画を生成</td>
+          </tr>
+          <tr>
+            <td>作曲</td>
+            <td><span class="tag">Suno</span></td>
+            <td>日本語歌詞付き楽曲を生成、最大4分</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <!-- ======== Page 5: クロージング + 課題 ======== -->
+  <div class="page">
+    <section>
+      <h2>6. クロージングと利用環境</h2>
+
+      <h3>無料版の利用制限について</h3>
+      <p>各ツールの無料版には1日あたりの利用回数などの制限があります。本プログラムでは以下のリソースを受講者に提供していますので、制限を気にせず開発に集中してください。</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>提供リソース</th>
+            <th>詳細</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="tag green">Antigravity</span></td>
+            <td>Google製の開発支援ツール。無料で利用可能</td>
+          </tr>
+          <tr>
+            <td><span class="tag blue">共有 Claude Code</span></td>
+            <td>Max $200 までの共有利用枠</td>
+          </tr>
+          <tr>
+            <td><span class="tag blue">Claude Code APIキー</span></td>
+            <td>上限 $100 の個人利用枠</td>
+          </tr>
+          <tr>
+            <td><span class="tag">各種APIキー</span></td>
+            <td>OpenAI、Google Cloud 等のAPIキーを提供</td>
+          </tr>
+          <tr>
+            <td><span class="tag">共有 v0</span></td>
+            <td>$20 までの共有利用枠（無料版は1日5回まで）</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout warning">
+        <p class="callout-title">注意: v0 無料版の制限</p>
+        <p>v0の無料版は1日5回までの利用制限があります。共有枠も限りがあるため、プロンプトを事前に考えてから生成を実行してください。</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="task-box">
+        <h3>今週の課題</h3>
+        <ul>
+          <li><strong>課題1:</strong> v0などのAIツールを使ってアイデアを形にし、公開URLをDiscordに投稿しよう</li>
+          <li><strong>課題2:</strong> 取り組みたい分野について調べて、Notionにまとめて共有URLを提出しよう</li>
+        </ul>
+        <h4>提出方法</h4>
+        <ul>
+          <li>Discordの課題提出チャンネルにてURLを共有してください（提出後の更新も可能です）。</li>
+        </ul>
+        <div class="callout warning" style="margin-bottom: 0;">
+          <p class="callout-title">注意</p>
+          <p class="mb-0">課題告知メッセージに<strong>リアクション必須</strong>です。また、不完全であっても<strong>まず提出することを優先</strong>してください。完成度は後から高められます。</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ======== Page 6: Appendix (学習リソース + 用語解説) ======== -->
+  <div class="page">
+    <section class="appendix">
+      <h2>Appendix: もっと知りたい人へ</h2>
+
+      <h3>学習リソース</h3>
+      <p>プログラムの内容をさらに深めたい方は、以下のトピックについて自主学習を進めてみてください。</p>
+      <div class="two-col">
+        <div>
+          <ul>
+            <li>実践プログラミング授業</li>
+            <li>DeNA AI 活用事例</li>
+            <li>モダンWeb開発入門</li>
+          </ul>
+        </div>
+        <div>
+          <ul>
+            <li><a href="https://firebase.google.com/" target="_blank">Firebase</a> 入門</li>
+            <li>Streamlit によるアプリ構築</li>
+            <li><a href="https://nextjs.org/" target="_blank">Next.js</a> 入門</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>用語解説</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>用語</th>
+            <th>解説</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Google Colab</strong></td>
+            <td>ブラウザ上でPythonを実行できるGoogleの無料サービス。GPUも利用可能。</td>
+          </tr>
+          <tr>
+            <td><strong><a href="https://firebase.google.com/" target="_blank">Firebase</a></strong></td>
+            <td>Googleが提供するBaaS（Backend as a Service）。認証、DB、ホスティングを一括管理。</td>
+          </tr>
+          <tr>
+            <td><strong>Cloud Run</strong></td>
+            <td>コンテナ化されたアプリケーションをサーバーレスで実行するGoogle Cloudのサービス。</td>
+          </tr>
+          <tr>
+            <td><strong>コンテナ</strong></td>
+            <td>アプリケーションとその実行環境を一つにパッケージ化する技術。Dockerが代表的。</td>
+          </tr>
+          <tr>
+            <td><strong>Cloud Functions</strong></td>
+            <td>イベント駆動で関数単位のコードを実行するサーバーレスサービス。</td>
+          </tr>
+          <tr>
+            <td><strong><a href="https://docs.anthropic.com/en/docs/claude-code/overview" target="_blank">Claude Code</a></strong></td>
+            <td>Anthropic社が提供するAIコード生成CLIツール。高精度なコード生成が特徴。</td>
+          </tr>
+          <tr>
+            <td><strong>Mediapipe</strong></td>
+            <td>Googleが開発するリアルタイムML推論フレームワーク。顔認識や姿勢推定に対応。</td>
+          </tr>
+          <tr>
+            <td><strong>OpenCV</strong></td>
+            <td>オープンソースのコンピュータビジョンライブラリ。画像処理・解析の定番ツール。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <!-- ======== Page 7: Appendix (アンケートへの回答) ======== -->
+  <div class="page">
+    <section class="appendix">
+      <h3>アンケートへの回答 (技術アドバイス集)</h3>
+      <p>受講者の皆さんから寄せられた関心分野に対する技術的なアドバイスをまとめました。より詳しい内容は<a href="W1_appendix_qa.html">補足資料（Q&amp;A集）</a>をご覧ください。</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>関心分野</th>
+            <th>活用できる技術・アプローチ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>街づくり・地図活用</td>
+            <td><span class="tag blue">Google Maps API</span> <span class="tag blue">Leaflet</span> 等のマップAPIで位置情報サービスを構築</td>
+          </tr>
+          <tr>
+            <td>デバイス開発</td>
+            <td>Raspberry Pi / Arduino とクラウドを連携し、IoTプロトタイプを構築</td>
+          </tr>
+          <tr>
+            <td>機械学習 (活用)</td>
+            <td>既存のML API（Vision API, Speech API等）を組み合わせて素早く実装</td>
+          </tr>
+          <tr>
+            <td>機械学習 (実装)</td>
+            <td><span class="tag green">Google Colab</span> + PyTorch / TensorFlow でモデルの学習・推論を実行</td>
+          </tr>
+          <tr>
+            <td>リアルタイム生成</td>
+            <td>WebSocket や Server-Sent Events を活用したストリーミングアーキテクチャ</td>
+          </tr>
+          <tr>
+            <td>AI Agent</td>
+            <td>LangChain / LlamaIndex 等のフレームワークで自律型AIエージェントを構築</td>
+          </tr>
+          <tr>
+            <td>コミュニティ</td>
+            <td>Firebase Auth + Firestore でリアルタイムチャットや掲示板機能を実装</td>
+          </tr>
+          <tr>
+            <td>気候変動・貧困</td>
+            <td>公開データセット + データ可視化ツール（Streamlit, D3.js）で社会課題を分析</td>
+          </tr>
+          <tr>
+            <td>バリアフリー</td>
+            <td>Webアクセシビリティ（WCAG）準拠 + 音声認識・テキスト読み上げAPIの活用</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer class="doc-footer">
+      <p>&copy; 2026 OLIENT TECH Inc. All rights reserved.</p>
+      <p>本資料は実践教育プログラム 2026 Spring の受講者向けに作成されたものです。</p>
+    </footer>
+  </div>
+
+  </div>
+
+  <script src="pdf-export.js"></script>
+
+</body>
+</html>

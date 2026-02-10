@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>社会課題 × テクノロジー — W1 Appendix — 2026 Spring</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* W1 Appendix — Overrides (base: style.css) */
+
+    /* --- TOC --- */
+    .atlas-toc {
+      background: var(--color-section-bg); border: 1px solid var(--color-border);
+      border-radius: var(--radius-default); padding: 20px 24px; margin: 20px 0 28px;
+    }
+    .atlas-toc-title {
+      font-size: 10pt; font-weight: 700; color: var(--color-primary);
+      margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--color-border);
+    }
+    .toc-group { margin-bottom: 6px; }
+    .toc-group-title {
+      font-size: 9pt; font-weight: 600; color: var(--color-primary);
+      margin: 4px 0 2px; padding: 0; text-align: left;
+    }
+    .toc-links {
+      padding: 0 0 2px 16px;
+      display: flex; flex-direction: column; gap: 1px;
+    }
+    .toc-links a {
+      font-size: 8.5pt; color: var(--color-text-light);
+      text-decoration: none; border-bottom: none; padding: 1px 0;
+      transition: color 0.15s;
+    }
+    .toc-links a:hover { color: var(--color-accent); }
+
+    /* --- Category Sections --- */
+    .category-section {
+      padding: 0;
+      border: none !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+    }
+    .category-header {
+      display: block; margin: 40px 0 8px; padding-top: 32px;
+      border-top: 1px solid var(--color-border);
+    }
+    .category-letter { display: none; }
+    .category-header h2 {
+      margin: 0; padding: 0; border: none;
+      font-size: 14pt; color: var(--color-primary);
+    }
+    .category-header h2::after { display: none; }
+    .category-desc { font-size: 8.5pt; color: var(--color-text-light); margin: 2px 0 0; }
+    .category-audience {
+      font-size: 8.5pt; color: var(--color-text-light); font-style: italic;
+      margin: 4px 0 16px;
+    }
+
+    /* --- QA Topics (spacious layout) --- */
+    .qa-topic {
+      margin: 32px 0; padding: 0;
+      background: transparent; border: none;
+      border-radius: 0; page-break-inside: avoid;
+    }
+    .doc-body > .qa-topic:first-child,
+    .doc-body > section:first-child > .qa-topic:first-child {
+      margin-top: 0;
+    }
+    .qa-topic h3 {
+      font-size: 11pt; font-weight: 700; color: var(--color-primary);
+      margin: 0 0 4px; display: flex; align-items: center; gap: 8px;
+    }
+    .q-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--color-accent); color: #fff;
+      font-size: 7.5pt; font-weight: 700; flex-shrink: 0;
+    }
+    .persona {
+      display: inline-block;
+      font-size: 8pt; color: var(--color-primary); font-weight: 600;
+      background: #eef0f5; border-radius: 10px;
+      padding: 3px 12px; margin: 6px 0 12px;
+      letter-spacing: 0.2px;
+    }
+    .topic-body h4 {
+      font-size: 10pt; font-weight: 700; color: var(--color-primary);
+      margin: 16px 0 6px; padding-bottom: 3px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    /* --- Sub-group Labels (within Part II) --- */
+    .subgroup-label {
+      font-size: 10.5pt; font-weight: 800; color: var(--color-primary);
+      margin: 32px 0 8px; padding: 10px 14px;
+      background: linear-gradient(135deg, #f0f2f8 0%, #e8eaf2 100%);
+      border-left: 4px solid var(--color-primary);
+      border-radius: 0 var(--radius-default) var(--radius-default) 0;
+      letter-spacing: 0.5px;
+    }
+    .subgroup-label:first-child { margin-top: 0; }
+
+    /* --- Sub-group Banner (image-backed section divider) --- */
+    .subgroup-banner {
+      position: relative; overflow: hidden;
+      margin: 0 -32px 24px; padding: 0;
+      height: 64px; display: flex; align-items: center;
+    }
+    .subgroup-banner:first-child { margin-top: -24px; }
+    .subgroup-banner img {
+      position: absolute; inset: 0; z-index: 0;
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .subgroup-banner .subgroup-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(90deg, rgba(26,26,46,0.78) 0%, rgba(26,26,46,0.45) 100%);
+    }
+    .subgroup-banner .subgroup-text {
+      position: relative; z-index: 2;
+      padding: 0 32px;
+      font-size: 11pt; font-weight: 800; color: #fff;
+      letter-spacing: 1.5px;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    }
+    .subgroup-banner .subgroup-text small {
+      display: block; font-size: 7.5pt; font-weight: 500;
+      color: rgba(255,255,255,0.55); letter-spacing: 0.5px;
+      margin-top: 2px; text-shadow: none;
+    }
+    @media print {
+      .subgroup-banner {
+        margin: 0 0 16px; height: 48px;
+        print-color-adjust: exact; -webkit-print-color-adjust: exact;
+      }
+      .subgroup-banner:first-child { margin-top: 0; }
+    }
+
+    /* --- Category Header (stronger for Part I categories) --- */
+    .category-header {
+      display: block; margin: 0 0 8px; padding: 16px 0 12px;
+      border-top: none;
+      border-bottom: 2px solid var(--color-primary);
+    }
+
+    /* --- Viewer PDF Button --- */
+    .viewer-pdf-btn {
+      background: var(--color-accent); color: #fff; border: none;
+      padding: 5px 16px; border-radius: 16px;
+      font-size: 8.5pt; font-family: var(--font-sans);
+      font-weight: 600; cursor: pointer;
+      transition: background 0.2s, transform 0.15s; white-space: nowrap;
+    }
+    .viewer-pdf-btn:hover { background: #c62d49; transform: scale(1.03); }
+
+    /* --- Chapter Divider (full page with bg image) --- */
+    .chapter-page {
+      position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 80px 48px;
+      background: var(--color-primary);
+    }
+    .chapter-page .cover-bg {
+      position: absolute; inset: 0; z-index: 0;
+    }
+    .chapter-page .cover-bg img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .chapter-page .cover-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(180deg, rgba(15,23,42,0.5) 0%, rgba(15,23,42,0.85) 100%);
+    }
+    .chapter-content { position: relative; z-index: 2; color: #fff; }
+    .chapter-number {
+      font-size: 10pt; letter-spacing: 6px; text-transform: uppercase;
+      color: rgba(255,255,255,0.5); margin-bottom: 16px; font-weight: 700;
+    }
+    .chapter-title {
+      font-size: 26pt; font-weight: 800; color: #fff !important;
+      margin: 0 0 16px; padding: 0; border: none;
+      background: transparent; border-radius: 0;
+      line-height: 1.3; letter-spacing: -0.5px;
+    }
+    .chapter-desc {
+      font-size: 11pt; color: rgba(255,255,255,0.6);
+      max-width: 440px; margin: 0 auto; line-height: 1.7;
+    }
+    @media screen {
+      .cover-page,
+      .chapter-page {
+        width: 794px;           /* 210mm @ 96dpi */
+        height: 1123px;         /* 297mm @ 96dpi */
+        margin: 0 auto 32px;
+        overflow: hidden;
+      }
+      .chapter-page {
+        border-radius: 0;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.06);
+      }
+    }
+    @media print {
+      .chapter-page {
+        page-break-before: always; page-break-after: always;
+        min-height: 200mm;
+        print-color-adjust: exact; -webkit-print-color-adjust: exact;
+      }
+    }
+
+    /* --- TOC Section Labels --- */
+    .toc-section-label {
+      font-size: 9pt; font-weight: 800; color: var(--color-primary);
+      margin: 12px 0 4px; padding-top: 10px;
+      border-top: 1.5px solid var(--color-border);
+      letter-spacing: 0.5px; text-align: left;
+    }
+    .toc-section-label:first-of-type {
+      border-top: none; margin-top: 2px; padding-top: 0;
+    }
+
+    /* --- Screen: separate paper sheets (A4 forced) --- */
+    @media screen {
+      .doc-body {
+        width: 794px;           /* 210mm @ 96dpi */
+        height: 1123px;         /* 297mm @ 96dpi */
+        margin: 0 auto 32px;
+        border-radius: 0 !important;
+        overflow: hidden;
+      }
+      section.page-break {
+        padding-top: 0; margin-top: 0;
+      }
+      section.page-break::before,
+      section.page-break::after {
+        content: none !important;
+      }
+    }
+
+    /* --- Design: Unified Color Palette --- */
+    /* Override tag variants → single muted scheme */
+    .tag {
+      background: #eef0f5; color: var(--color-primary);
+      font-weight: 600; border: none;
+    }
+    .tag.blue { background: #eef0f5; color: var(--color-primary); }
+    .tag.green { background: #eef0f5; color: var(--color-primary); }
+    .tag.purple { background: #eef0f5; color: var(--color-primary); }
+    .tag a { color: var(--color-primary) !important; }
+
+    /* Override callout variants → cohesive navy/accent tones */
+    .callout {
+      border-left-color: var(--color-primary);
+      background: #f5f6f9;
+    }
+    .callout.info {
+      border-left-color: var(--color-primary);
+      background: #f0f3f8;
+    }
+    .callout.tip {
+      border-left-color: var(--color-accent);
+      background: #fdf4f6;
+    }
+    .callout.warning {
+      border-left-color: #c0a060;
+      background: #faf6ee;
+    }
+
+    /* Override category section borders → uniform */
+    .category-section { border-top-color: var(--color-border) !important; }
+
+    /* Ref-case cards → softer */
+    .ref-case {
+      border-left: 3px solid var(--color-primary);
+      background: #f8f9fb;
+    }
+
+    /* Tables → softer header */
+    th {
+      background: var(--color-primary);
+      color: #fff;
+      font-weight: 600;
+      text-transform: none;
+      letter-spacing: 0.3px;
+    }
+
+    /* Topic separator — strong visual break */
+    .qa-topic + .qa-topic {
+      border-top: 2px solid #d0d4de;
+      padding-top: 28px;
+      margin-top: 32px;
+    }
+    /* Sub-group label/banner resets topic separator */
+    .subgroup-label + .qa-topic,
+    .subgroup-banner + .qa-topic {
+      border-top: none;
+      padding-top: 0;
+      margin-top: 12px;
+    }
+
+    /* --- Print --- */
+    @media print {
+      .doc-body {
+        page-break-after: always;
+      }
+      .doc-body:last-of-type {
+        page-break-after: auto;
+      }
+      .category-letter, .q-badge {
+        print-color-adjust: exact; -webkit-print-color-adjust: exact;
+      }
+      .qa-topic { border: none; }
+      .category-section { padding: 16px 20px 4px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======== Viewer Bar ======== -->
+  <div class="viewer-bar no-print">
+    <span class="viewer-title">社会課題 × テクノロジー — W1 Appendix</span>
+    <span class="viewer-meta">OLIENT TECH 2026 Spring</span>
+    <button class="viewer-pdf-btn" onclick="exportPDF('W1_appendix_qa.pdf')" title="PDFファイルとしてダウンロードします">&#x2913; PDF保存</button>
+  </div>
+
+  <!-- ======== Cover Page ======== -->
+  <div class="cover-page">
+    <div class="cover-bg">
+      <img src="../images/a4-vertical/abstarct/depth_mist_mountain.png" alt="">
+    </div>
+    <div class="cover-overlay"></div>
+    <div class="cover-content">
+      <p class="cover-program">OLIENT TECH 2026 Spring — Week 1 Appendix</p>
+      <h1 class="cover-title">社会課題解決のための<br>技術ガイド</h1>
+      <p class="cover-subtitle">興味分野別の技術的アドバイスと参考事例</p>
+      <div class="cover-meta">
+        <span>講師: 上津原 和弘</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-body">
+
+  <!-- ======== Header ======== -->
+  <header class="doc-header">
+    <p class="program-label">OLIENT TECH 2026 Spring</p>
+    <h1>社会課題解決のための技術ガイド</h1>
+    <p class="subtitle">興味分野別の技術的アドバイスと参考事例</p>
+    <div class="meta">
+      <span>Week 1 — Appendix</span>
+      <span>|</span>
+      <span>講師: 上津原 和弘</span>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ======== Important Note ======== -->
+    <section>
+      <div class="callout info">
+        <p class="callout-title">この資料について</p>
+        <p>以降のページでは、私が知っている範囲で可能な限り良い回答を出来るよう努めていますが、正確な回答を提供することが難しい場合もありました。あくまで正解ではなく私個人の一意見に過ぎず、自分の意見を最優先していただけるようお願いします。</p>
+        <p>技術的な内容が中心ですが、最優先していただきたいのはアプリがユーザーにもたらす価値の部分で、審査の際もそこを最も重視して評価します。<strong>技術は目標を達成するための手段です。</strong></p>
+      </div>
+    </section>
+
+    <!-- ======== Table of Contents (Page 1: Part I) ======== -->
+    <nav class="atlas-toc">
+      <p class="atlas-toc-title">Contents</p>
+
+      <p class="toc-section-label">I. 技術ガイド</p>
+      <div class="toc-group">
+        <p class="toc-group-title">街づくり・地理情報</p>
+        <div class="toc-links"><a href="#q-machizukuri">街づくり</a></div>
+      </div>
+      <div class="toc-group">
+        <p class="toc-group-title">AI活用</p>
+        <div class="toc-links">
+          <a href="#q-ml-use">機械学習がやりたい（活用重視）</a>
+          <a href="#q-ml-impl">機械学習がやりたい（実装重視）</a>
+          <a href="#q-realtime">リアルタイム生成がやりたい</a>
+          <a href="#q-signal">AIで信号/文章変換したい</a>
+          <a href="#q-datascience">データサイエンス</a>
+          <a href="#q-prompt">プロンプト・コンテキストエンジニアリング</a>
+          <a href="#q-imagegen">画像生成の活用</a>
+        </div>
+      </div>
+      <div class="toc-group">
+        <p class="toc-group-title">AI Agent・高度なAI活用</p>
+        <div class="toc-links">
+          <a href="#q-agent">AI Agentについて詳しく知りたい</a>
+          <a href="#q-coexist">生成AIとの共存</a>
+          <a href="#q-factcheck">ファクトチェック/バリデーション</a>
+        </div>
+      </div>
+      <div class="toc-group">
+        <p class="toc-group-title">ハードウェア</p>
+        <div class="toc-links">
+          <a href="#q-device">デバイス開発</a>
+          <a href="#q-smarthome">スマートホーム</a>
+          <a href="#q-illust">イラストデザイン</a>
+          <a href="#q-cooking">全自動調理器</a>
+        </div>
+      </div>
+    </nav>
+
+  </main>
+  </div>
+
+  <div class="doc-body">
+  <main>
+
+    <!-- ======== Table of Contents (Page 2: Part II + III) ======== -->
+    <nav class="atlas-toc">
+      <p class="atlas-toc-title">Contents (続き)</p>
+
+      <p class="toc-section-label">II. 社会課題・テーマ別アドバイス</p>
+      <div class="toc-group">
+        <p class="toc-group-title">医療・福祉・生活</p>
+        <div class="toc-links">
+          <a href="#q-medical">医療・介護・福祉</a>
+          <a href="#q-accessibility">バリアフリー</a>
+          <a href="#q-stuttering">吃音症改善</a>
+          <a href="#q-medication">薬の飲み忘れ・生活管理</a>
+        </div>
+      </div>
+      <div class="toc-group">
+        <p class="toc-group-title">産業・労働・インフラ</p>
+        <div class="toc-links">
+          <a href="#q-labor">人材不足/業務効率化/自動化</a>
+          <a href="#q-construction">建設業界DX・3K</a>
+          <a href="#q-primary">第一次産業・伝統産業</a>
+          <a href="#q-transport">公共交通機関・MaaS</a>
+          <a href="#q-nuclear">廃炉・原子力処理</a>
+        </div>
+      </div>
+      <div class="toc-group">
+        <p class="toc-group-title">教育・地域社会</p>
+        <div class="toc-links">
+          <a href="#q-education">教育格差・学び合い</a>
+          <a href="#q-birthrate">少子化・跡継ぎ問題</a>
+          <a href="#q-community">コミュニティ/助け合い</a>
+          <a href="#q-foodloss">フードロス</a>
+          <a href="#q-poverty">貧困</a>
+          <a href="#q-election">選挙の投票率</a>
+        </div>
+      </div>
+      <div class="toc-group">
+        <p class="toc-group-title">環境・未来</p>
+        <div class="toc-links">
+          <a href="#q-climate">気候変動/環境問題</a>
+          <a href="#q-future">近未来</a>
+        </div>
+      </div>
+
+      <p class="toc-section-label">III. プログラム参加ガイド</p>
+      <div class="toc-group">
+        <p class="toc-group-title">講師からのアドバイス</p>
+        <div class="toc-links">
+          <a href="#q-programming">プログラミングへの苦手意識</a>
+          <a href="#q-ai-knowledge">AIの知識は必要か</a>
+          <a href="#q-love-programming">プログラミングを好きになるには</a>
+          <a href="#q-solo">一人参加について</a>
+          <a href="#q-teamdev">チーム開発のコツ</a>
+          <a href="#q-career">キャリア・進路</a>
+        </div>
+      </div>
+    </nav>
+
+  </main>
+  </div>
+
+  <!-- ======== Chapter 1: 技術ガイド ======== -->
+  <div class="chapter-page">
+    <div class="cover-bg">
+      <img src="../images/a4-vertical/mineral/section_liquid_chrome_wave.jpg" alt="">
+    </div>
+    <div class="cover-overlay"></div>
+    <div class="chapter-content">
+      <p class="chapter-number">Part I</p>
+      <h2 class="chapter-title">技術ガイド</h2>
+      <p class="chapter-desc">街づくり、AI活用、AIエージェント、ハードウェア — 開発に使える技術とツールの紹介</p>
+    </div>
+  </div>
+
+  <div class="doc-body">
+
+    <!-- ============================================================
+         Category A: 街づくり・地理情報
+         ============================================================ -->
+    <section class="category-section cat-a page-break" id="cat-a" style="--cat-color: var(--color-cat-a);">
+      <div class="category-header">
+        <span class="category-letter">A</span>
+        <div>
+          <h2>街づくり・地理情報</h2>
+          <p class="category-desc">地図API、位置情報、3D都市モデルを活用したサービス開発</p>
+        </div>
+      </div>
+      <p class="category-audience">「地域の課題をテクノロジーで解決したい」「地図やデータを使ったサービスを作りたい」という方へ</p>
+
+      <div class="qa-topic" id="q-machizukuri">
+        <h3><span class="q-badge">Q</span> 街づくり</h3>
+        <div class="topic-body">
+        <h4>マップAPI（無料）</h4>
+        <table>
+          <thead><tr><th>ツール</th><th>概要</th><th>特徴</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tag green"><a href="https://leafletjs.com/" style="color:inherit;border:none;">Leaflet</a></span></td><td>OpenStreetMapをブラウザで組み込むために使いやすくしたライブラリ</td><td>完全無料、軽量、カスタマイズ性が高い</td></tr>
+            <tr><td><span class="tag green"><a href="https://www.openstreetmap.org/" style="color:inherit;border:none;">OpenStreetMap</a></span></td><td>オープンソースGoogle Map。全データが無料でダウンロード可能</td><td>アプリの組み込みやデータ分析に活用可能</td></tr>
+          </tbody>
+        </table>
+        <h4>マップAPI（無料枠あり）</h4>
+        <table>
+          <thead><tr><th>ツール</th><th>概要</th><th>特徴</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tag blue"><a href="https://developers.google.com/maps" style="color:inherit;border:none;">Google Maps API</a></span></td><td>無料枠を超えると割高だが、間違いなく最強のマップAPI</td><td>豊富な機能、高精度データ、圧倒的な情報量</td></tr>
+            <tr><td><span class="tag blue"><a href="https://www.mapbox.com/" style="color:inherit;border:none;">Mapbox API</a></span></td><td>Google Mapsより遥かにオシャレで、見た目やカスタマイズ性ではGoogle Mapsを凌ぐ</td><td>デザイン重視のプロジェクトに最適</td></tr>
+          </tbody>
+        </table>
+        <h4>データベース・データソース</h4>
+        <table>
+          <thead><tr><th>データソース</th><th>内容</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tag purple"><a href="https://www.mlit.go.jp/plateau/" style="color:inherit;border:none;">PLATEAU</a></span></td><td>全国地理情報 -- 国土交通省が提供する3D都市モデル</td></tr>
+            <tr><td><span class="tag purple"><a href="https://resas.go.jp/" style="color:inherit;border:none;">RESAS</a></span></td><td>地域経済 -- 地域経済分析システム</td></tr>
+            <tr><td><span class="tag purple"><a href="https://info.tokyo-digitaltwin.metro.tokyo.lg.jp/" style="color:inherit;border:none;">東京デジタルツイン</a></span></td><td>最も詳細 -- 東京都の高精度3Dモデル</td></tr>
+          </tbody>
+        </table>
+        <div class="callout tip">
+          <p class="callout-title">おすすめの組み合わせ</p>
+          <p>コストを抑えたい場合は <span class="tag green">Leaflet</span> + <span class="tag green">OpenStreetMap</span> + <span class="tag purple">PLATEAU</span> の組み合わせが強力です。デザインにこだわるなら <span class="tag blue">Mapbox</span> を検討してください。</p>
+        </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="doc-body">
+
+    <!-- ============================================================
+         Category B: AI活用
+         ============================================================ -->
+    <section class="category-section cat-b page-break" id="cat-b" style="--cat-color: var(--color-cat-b);">
+      <div class="category-header">
+        <span class="category-letter">B</span>
+        <div>
+          <h2>AI活用</h2>
+          <p class="category-desc">機械学習・生成AI・リアルタイム推論を活用したサービス開発</p>
+        </div>
+      </div>
+      <p class="category-audience">「AIの力を使って新しい体験やサービスを作りたい」という方へ</p>
+
+      <div class="qa-topic" id="q-ml-use">
+        <h3><span class="q-badge">Q</span> 機械学習がやりたい（活用重視）</h3>
+        <p class="persona">こんな人向け: ライブ変換、イラスト生成、姿勢解析</p>
+        <div class="topic-body">
+        <div class="two-col">
+          <div>
+            <h4>ブラウザ組み込みAPIで活用 <span class="tag green">0円</span></h4>
+            <ul>
+              <li><strong>Web API</strong> -- 音声認識/音声合成</li>
+              <li><a href="https://ai.google.dev/edge/mediapipe/solutions/guide"><strong>Mediapipe</strong></a> -- 画像認識/姿勢認識/文章生成</li>
+            </ul>
+            <div class="callout tip" style="margin-bottom: 0;"><p>ユーザーのブラウザで実行されるため<strong>完全0円</strong>。リアルタイム動作が可能。</p></div>
+          </div>
+          <div>
+            <h4>AI APIを活用 <span class="tag blue">低コスト</span></h4>
+            <ul>
+              <li><a href="https://platform.openai.com/"><strong>ChatGPT API</strong></a> -- 文章/画像生成/画像認識</li>
+              <li><a href="https://ai.google.dev/"><strong>Gemini API</strong></a> -- マルチモーダル対応</li>
+            </ul>
+            <div class="callout tip" style="margin-bottom: 0;"><p>数行で実装可能。高度な機能を手軽に組み込める。</p></div>
+          </div>
+        </div>
+        <h4>最新のAIを手元で動かす</h4>
+        <p><span class="tag purple"><a href="https://huggingface.co/" style="color:inherit;border:none;">Hugging Face</a></span> を活用すれば、画像認識、奥行推定、条件付き画像生成、動画生成など、最先端モデルを自分の環境で動かすことができます。</p>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="doc-body">
+
+    <section class="category-section cat-b" style="--cat-color: var(--color-cat-b);">
+
+      <div class="qa-topic" id="q-ml-impl">
+        <h3><span class="q-badge">Q</span> 機械学習がやりたい（実装重視）</h3>
+        <p class="persona">こんな人向け: フルスクラッチ、深層強化学習</p>
+        <div class="topic-body">
+        <div class="two-col">
+          <div>
+            <h4>AIをゼロから作りたい</h4>
+            <p><strong>松尾研AI資料</strong>が学習の基礎的な出発点として有用です。</p>
+            <ul>
+              <li><span class="tag blue"><a href="https://lightning.ai/" style="color:inherit;border:none;">PyTorch Lightning</a></span></li>
+              <li><span class="tag blue"><a href="https://hydra.cc/" style="color:inherit;border:none;">Hydra</a></span> (設定管理)</li>
+              <li><span class="tag blue"><a href="https://www.docker.com/" style="color:inherit;border:none;">Docker</a></span> (環境構築)</li>
+            </ul>
+          </div>
+          <div>
+            <h4>最新のAIの仕組みを知りたい</h4>
+            <p><a href="https://paperswithcode.com/"><strong>Papers with Code</strong></a> を活用して最新の研究動向と実装をキャッチアップしましょう。</p>
+            <div class="callout"><p>実装重視の場合、学習に時間がかかるため、活用重視のアプローチも並行して進めることをおすすめします。</p></div>
+          </div>
+        </div>
+        <h4>汎用AIアーキテクチャパターン</h4>
+        <p>AIは本質的に<strong>入力→変換→出力</strong>の変換システム。あらゆるデータ（文章・画像・音声・信号）を同じ次元のベクトル（例: 512次元）に変換すれば、あらゆるメディアをAIで扱えるようになります。</p>
+        <ul>
+          <li>最強モデルの<strong>中間層だけを借りてくる</strong></li>
+          <li>入出力の形式変換のために<strong>全結合層</strong>等を付け足す</li>
+          <li>自分のデータで<strong>ファインチューニング</strong></li>
+        </ul>
+        <p>→ これだけでオリジナルのAIが作れる。<strong>非常によく使われているテクニック</strong>であり、四則演算すらいらないレベルで実践可能。</p>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="doc-body">
+
+    <section class="category-section cat-b" id="cat-b-cont" style="--cat-color: var(--color-cat-b);">
+
+      <div class="qa-topic" id="q-realtime">
+        <h3><span class="q-badge">Q</span> リアルタイム生成がやりたい</h3>
+        <div class="topic-body">
+        <div class="two-col">
+          <div>
+            <h4>リアルタイム推論 + 簡単 <span class="tag green">おすすめ</span></h4>
+            <p><span class="tag green"><a href="https://teachablemachine.withgoogle.com/" style="color:inherit;border:none;">Teachable Machine</a></span></p>
+            <ul><li>3分で画像/音声認識モデルの学習とデプロイが可能</li><li>数行のコードでアプリに組み込み可能</li></ul>
+          </div>
+          <div>
+            <h4>リアルタイム画像生成 <span class="tag blue">上級</span></h4>
+            <p><span class="tag blue"><a href="https://modal.com/" style="color:inherit;border:none;">Modal</a></span> + <span class="tag blue">Flux</span></p>
+            <ul><li>22行でデプロイできるリアルタイム画像生成AI</li><li>クラウド上のGPUで高速推論</li></ul>
+          </div>
+        </div>
+        <h4>ブラウザで動くAIライブラリ（エッジAI）</h4>
+        <table>
+          <thead><tr><th>ライブラリ</th><th>概要</th><th>用途</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tag blue"><a href="https://docs.opencv.org/4.x/d5/d10/tutorial_js_root.html" style="color:inherit;border:none;">OpenCV.js</a></span></td><td>画像処理の定番OpenCVのJS版</td><td>顔検出、物体認識、画像変換</td></tr>
+            <tr><td><span class="tag blue"><a href="https://tesseract.projectnaptha.com/" style="color:inherit;border:none;">Tesseract.js</a></span></td><td>OCR（文字認識）のJS版</td><td>画像からテキスト抽出</td></tr>
+          </tbody>
+        </table>
+        <p>ブラウザ上でAIを動かすと<strong>すごくインパクトがある</strong>。リアルタイムAIはそもそもエッジデバイスで動く前提で設計されているケースが多く、ニーズも非常に多い。</p>
+        </div>
+      </div>
+
+      <div class="qa-topic" id="q-signal">
+        <h3><span class="q-badge">Q</span> AIで信号/文章変換したい</h3>
+        <div class="topic-body">
+        <table>
+          <thead><tr><th>用途</th><th>アプローチ</th><th>詳細</th></tr></thead>
+          <tbody>
+            <tr><td><strong>文章変換</strong></td><td><span class="tag blue">ChatGPT API</span> / <span class="tag blue">Gemini API</span></td><td>Chat APIで最低限の処理が可能。特徴量ベクトルで精度向上</td></tr>
+            <tr><td><strong>信号変換（簡易）</strong></td><td><span class="tag green"><a href="https://scipy.org/" style="color:inherit;border:none;">SciPy</a></span></td><td>FFT、フィルタリングなど基本的な信号処理</td></tr>
+            <tr><td><strong>信号変換（本格）</strong></td><td><span class="tag purple">PyTorch</span></td><td>深層学習ベースの信号処理で高度な変換</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <div class="doc-body">
+    <section class="category-section cat-b" style="--cat-color: var(--color-cat-b);">
+
+      <div class="qa-topic" id="q-datascience">
+        <h3><span class="q-badge">Q</span> データサイエンス</h3>
+        <p class="persona">こんな人向け: 未来予測、回帰分析、データ可視化</p>
+        <div class="topic-body">
+        <p>単純な回帰問題であればライブラリだけで十分対応可能。コンペ経験や実務インターンの知見も活用できます。</p>
+        <table>
+          <thead><tr><th>ライブラリ</th><th>概要</th><th>用途</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tag blue"><a href="https://matplotlib.org/" style="color:inherit;border:none;">Matplotlib</a></span></td><td>Pythonの定番グラフ描画ライブラリ</td><td>データの可視化全般</td></tr>
+            <tr><td><span class="tag blue"><a href="https://scikit-learn.org/" style="color:inherit;border:none;">scikit-learn</a></span></td><td>機械学習の定番ライブラリ</td><td>分類、回帰、クラスタリング</td></tr>
+            <tr><td><span class="tag blue"><a href="https://geopandas.org/" style="color:inherit;border:none;">GeoPandas</a></span></td><td>地理空間データ分析ライブラリ</td><td>地図データの分析・可視化</td></tr>
+          </tbody>
+        </table>
+        <div class="callout tip">
+          <p class="callout-title">高性能AIとの組み合わせ</p>
+          <p>高性能なAIで<strong>特徴量ベクトルを作成</strong>し、推論は軽量なモデルで行う（蒸留・圧縮）アプローチも有効。ブラウザやエッジデバイスで動かす場合は量子化したローカルモデルも選択肢に。</p>
+        </div>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="doc-body">
+
+    <section class="category-section cat-b" id="cat-b-cont2" style="--cat-color: var(--color-cat-b);">
+
+      <div class="qa-topic" id="q-prompt">
+        <h3><span class="q-badge">Q</span> プロンプト・コンテキストエンジニアリング</h3>
+        <div class="topic-body">
+        <p>ソフトウェア開発においては「プロンプトエンジニアリング」よりも<strong>「コンテキストエンジニアリング」</strong>と捉えた方が実践的です。</p>
+        <h4>おすすめのアプローチ</h4>
+        <ul>
+          <li>前提知識をMarkdownファイルにまとめ、コンテキストフォルダに集約 → <strong>フォルダごとAIに参照させる</strong></li>
+          <li>「<strong>差分を最小化してください</strong>」— 既存コードへの影響を最小限に</li>
+          <li>「<strong>既存実装を参考にしてください</strong>」— 既存パターンとの一貫性を保つ</li>
+          <li>「<strong>ベストプラクティスを調べてください</strong>」— 最も効果的な手法を採用</li>
+          <li>「<strong>マルチエージェントでレビューしてください</strong>」— 多面的な視点で品質を担保</li>
+        </ul>
+        <h4>AI開発の基本戦略</h4>
+        <ul>
+          <li><strong>複数エージェントを同時実行</strong> — 編集範囲が被らないエージェントを並列化（例: レビューと新規作成を同時に）</li>
+          <li><strong>待ち時間を作らない</strong> — ボーっと待つのは非推奨、別タスクを並行</li>
+          <li><strong>一発で完璧を目指さない</strong> — エラーが来ることを前提に、レビューAIやテストケースを並列で用意</li>
+        </ul>
+        <div class="callout tip">
+          <p class="callout-title">実践のコツ</p>
+          <p>実質的に<strong>「チームAI開発」</strong>のような進め方になる。コンテキストが全て — どんなものを作りたいかの議事録や要件メモがあると、AIのアウトプット品質が格段に上がります。</p>
+        </div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <div class="doc-body">
+
+    <section class="category-section cat-b" style="--cat-color: var(--color-cat-b);">
+
+      <div class="qa-topic" id="q-imagegen">
+        <h3><span class="q-badge">Q</span> 画像生成の活用</h3>
+        <div class="topic-body">
+        <p>画像生成を単体で考えるのではなく、<strong>アプリやウェブサイトを作る中で「この場所に合う画像が欲しい」</strong>というシチュエーションに合わせて使うのが効果的。</p>
+        <h4>おすすめの活用シーン</h4>
+        <table>
+          <thead><tr><th>活用シーン</th><th>詳細</th></tr></thead>
+          <tbody>
+            <tr><td><strong>背景画像の生成</strong></td><td>抽象的な背景画像をアプリのデザインに使うとクオリティが断然上がる。直線的でない自然なデザインが作れる</td></tr>
+            <tr><td><strong>スライド・資料作成</strong></td><td>情報量が多いドキュメントを視覚的に表現。画像生成の入力にドキュメントを使うのも有効</td></tr>
+            <tr><td><strong>サムネイル生成</strong></td><td>コンテンツに合わせたサムネイルを自動生成</td></tr>
+            <tr><td><strong>写真への注釈</strong></td><td>現実世界の写真に説明やアテンションを書き加える — 他の手段では難しい活用法</td></tr>
+          </tbody>
+        </table>
+        <h4>高度な画像生成（条件付き生成）</h4>
+        <p><strong>ControlNet</strong>を使えば、ポーズ・深度マップ・エッジ検出など多様な入力を条件として画像を生成できます。イラスト制作でキャラクターのポーズを指定したり、写真のスタイルを変換する用途に強力。</p>
+        <h4>動画生成AI</h4>
+        <p>動画生成AIも技術的には可能だが、現時点では<strong>コストが非常に高い</strong>。ローカル実行も不可能ではないがGPUリソースが必要。短いクリップや特定用途（サムネイル動画等）から始めるのが現実的。</p>
+        <div class="callout tip">
+          <p class="callout-title">コンテキストが大事</p>
+          <p><strong>自分が説明できるもの・理解できるものは、生成AIでも表現できる。</strong>どんなイラストを作りたいかの議事録や文章があるとクオリティが上がる。Gemini MCPなどコード生成AIと画像生成の連携がおすすめ。</p>
+        </div>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="doc-body">
+
+    <!-- ============================================================
+         Category C: AI Agent
+         ============================================================ -->
+    <section class="category-section cat-c page-break" id="cat-c" style="--cat-color: var(--color-cat-c);">
+      <div class="category-header">
+        <span class="category-letter">C</span>
+        <div>
+          <h2>AI Agent・高度なAI活用</h2>
+          <p class="category-desc">AIエージェント、ローカルLLM、MCP、生成AIとの共存</p>
+        </div>
+      </div>
+      <p class="category-audience">「AIが自律的にタスクをこなす仕組みに興味がある」「最先端のAI活用を探求したい」という方へ</p>
+
+      <div class="qa-topic" id="q-agent">
+        <h3><span class="q-badge">Q</span> AI Agentについて詳しく知りたい</h3>
+        <p class="persona">こんな人向け: MCP, LangChain, LLM, RAG, Local LLM</p>
+        <div class="topic-body">
+        <h4>MCP (Model Context Protocol)</h4>
+        <p><span class="tag blue"><a href="https://docs.anthropic.com/en/docs/claude-code/overview" style="color:inherit;border:none;">Claude Code</a></span> + <span class="tag blue">Playwright MCP</span> を使えば、AIがブラウザを操作してタスクを実行できます。</p>
+        <h4>AIエージェント構築</h4>
+        <ul>
+          <li>LangChain、CrewAI等の公式ドキュメントが構築の参考として有用。まずは小さなタスクを自動化するところから</li>
+          <li><span class="tag blue">Gemini</span> の <strong>Gem</strong> や <a href="https://notebooklm.google.com/"><strong>NotebookLM</strong></a> はAIエージェントに近い存在</li>
+          <li><span class="tag blue">Claude Code</span> などのコード生成AIはAIエージェントと同じ感覚で使える</li>
+        </ul>
+        <h4>ローカルLLM</h4>
+        <div class="two-col">
+          <div><p><span class="tag purple"><a href="https://lmstudio.ai/" style="color:inherit;border:none;">LM Studio</a></span></p><p>GUIでローカルLLMを簡単に管理・実行</p></div>
+          <div><p><span class="tag purple"><a href="https://github.com/open-webui/open-webui" style="color:inherit;border:none;">Open WebUI</a></span></p><p>ChatGPT的なUIでローカルLLMを利用</p></div>
+        </div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <div class="doc-body">
+    <section class="category-section cat-c" style="--cat-color: var(--color-cat-c);">
+
+      <div class="qa-topic" id="q-coexist">
+        <h3><span class="q-badge">Q</span> 生成AIとの共存</h3>
+        <div class="topic-body">
+        <h4>トレンド</h4>
+        <ul>
+          <li>人間が画像や文章で<strong>具体的な指示（コンテキスト）</strong>を与え、思い通りの結果を出す</li>
+          <li>データになっていない情報をなるべく多くMarkdown等の文章形式で蓄積する</li>
+        </ul>
+        <div class="callout tip">
+          <p class="callout-title">重要な視点</p>
+          <p>AIのモデルが進化したときに、<strong>入力データこそが差別化ポイント</strong>になります。今のうちからデータを文章形式で蓄積しておくことが将来の競争力に直結します。</p>
+        </div>
+        </div>
+      </div>
+
+      <div class="qa-topic" id="q-factcheck">
+        <h3><span class="q-badge">Q</span> ファクトチェック/バリデーション</h3>
+        <div class="topic-body">
+        <table>
+          <thead><tr><th>要件</th><th>アプローチ</th><th>詳細</th></tr></thead>
+          <tbody>
+            <tr><td>コストや量が問題でない</td><td><span class="tag blue">Chat API</span></td><td>手軽に始められる</td></tr>
+            <tr><td>スピード重視</td><td><span class="tag green">特徴量ベクトル変換</span></td><td>類似度検索、クラス分類が可能</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="doc-body">
+
+    <!-- ============================================================
+         Category E: ハードウェア (Part I に含む)
+         ============================================================ -->
+    <section class="category-section cat-e page-break" id="cat-e" style="--cat-color: var(--color-cat-e);">
+      <div class="category-header">
+        <span class="category-letter">E</span>
+        <div>
+          <h2>ハードウェア</h2>
+          <p class="category-desc">マイコンボード、IoTデバイス、スマートホームなど物理デバイスとソフトウェアの統合</p>
+        </div>
+      </div>
+      <p class="category-audience">「ソフトウェアだけでなく、物理的なデバイスも組み合わせたい」という方へ</p>
+
+      <div class="qa-topic" id="q-device">
+        <h3><span class="q-badge">Q</span> デバイス開発</h3>
+        <div class="topic-body">
+        <h4>開発用ボード</h4>
+        <p>一部の <span class="tag"><a href="https://www.arduino.cc/" style="color:inherit;border:none;">Arduino</a></span> / <span class="tag"><a href="https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/" style="color:inherit;border:none;">ESP32</a></span> はHIDデバイスとして動作し、PCと連携するデバイスを作ることが可能です。</p>
+        <div class="callout tip">
+          <p class="callout-title">おすすめボード</p>
+          <p>ESP32なら <strong>「XIAO」</strong> を推します。小型で安価、Wi-Fi/Bluetooth搭載。<strong>PlatformIO</strong> を使うとハードウェアをソフト的に扱え、AIコード生成の恩恵を受けやすい。</p>
+        </div>
+        </div>
+      </div>
+
+      <div class="qa-topic" id="q-smarthome">
+        <h3><span class="q-badge">Q</span> スマートホーム</h3>
+        <div class="topic-body">
+        <table>
+          <thead><tr><th>カテゴリ</th><th>推奨ツール</th><th>備考</th></tr></thead>
+          <tbody>
+            <tr><td><strong>開発用ボード</strong></td><td><span class="tag">ESP32</span> / <span class="tag"><a href="https://m5stack.com/" style="color:inherit;border:none;">M5Stack</a></span></td><td>Wi-Fi搭載でIoTに最適。M5Stackはディスプレイ付き</td></tr>
+            <tr><td><strong>開発環境</strong></td><td><span class="tag blue"><a href="https://platformio.org/" style="color:inherit;border:none;">PlatformIO</a></span></td><td>VSCodeと統合可能な組み込み開発環境</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <div class="qa-topic" id="q-illust">
+        <h3><span class="q-badge">Q</span> イラストデザイン</h3>
+        <div class="topic-body">
+        <p>本資料の <a href="#q-ml-use">「機械学習がやりたい（活用重視）」</a> および <a href="#q-realtime">「リアルタイム生成がやりたい」</a> を参照してください。</p>
+        <div class="ref-case">
+          <p class="ref-label">参考事例 — Anirole</p>
+          <p>リアルタイム画像生成を活用したサービス。ユーザーの入力に応じてリアルタイムにイラストを生成・変換。</p>
+        </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="doc-body">
+
+    <section class="category-section cat-e" style="--cat-color: var(--color-cat-e);">
+
+      <div class="qa-topic" id="q-cooking">
+        <h3><span class="q-badge">Q</span> 全自動調理器</h3>
+        <p class="persona">こんな人向け: IoTデバイス、ハードウェア連携、自動化</p>
+        <div class="topic-body">
+        <p><strong>IoTデバイス</strong>（ESP32等）を使えば比較的簡単に作れるようになっています。AIコード生成の恩恵を受けやすい分野。</p>
+        <table>
+          <thead><tr><th>ツール</th><th>概要</th><th>特徴</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tag blue"><a href="https://www.espressif.com/en/products/socs/esp32" style="color:inherit;border:none;">ESP32</a></span></td><td>Wi-Fi/Bluetooth搭載マイコン</td><td>センサーやモーター制御に最適。安価</td></tr>
+            <tr><td><span class="tag blue"><a href="https://platformio.org/" style="color:inherit;border:none;">PlatformIO</a></span></td><td>ハードウェアをソフト的に扱えるプラットフォーム</td><td>VSCodeと統合可能</td></tr>
+            <tr><td><span class="tag green"><a href="https://micropython.org/" style="color:inherit;border:none;">MicroPython</a></span></td><td>Pythonでマイコン開発</td><td>とっつきやすい。AI生成コードとの相性も良い</td></tr>
+          </tbody>
+        </table>
+        <div class="callout tip">
+          <p class="callout-title">ポイント</p>
+          <p>ハードウェア制御のコードもAIが生成できるため、ソフトウェア的なアプローチで開発可能。<strong>PlatformIO</strong>を使うとハードウェアをソフト的に扱え、開発体験が大幅に向上します。</p>
+        </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ======== Chapter 2: 社会課題 ======== -->
+  <div class="chapter-page">
+    <div class="cover-bg">
+      <img src="../images/a4-vertical/mineral/section_obsidian_fire.jpg" alt="">
+    </div>
+    <div class="cover-overlay"></div>
+    <div class="chapter-content">
+      <p class="chapter-number">Part II</p>
+      <h2 class="chapter-title">社会課題・テーマ別<br>アドバイス</h2>
+      <p class="chapter-desc">医療、交通、教育、環境、福祉 — 17のテーマに対する技術的アドバイスと参考事例</p>
+    </div>
+  </div>
+
+  <div class="doc-body">
+
+    <!-- ============================================================
+         Category D: 社会課題・テーマ別アドバイス
+         ============================================================ -->
+    <section class="category-section cat-d page-break" id="cat-d" style="--cat-color: var(--color-cat-d);">
+      <div class="category-header">
+        <span class="category-letter">D</span>
+        <div>
+          <h2>社会課題・テーマ別アドバイス</h2>
+          <p class="category-desc">医療、交通、教育、環境、福祉 — あらゆる社会課題にテクノロジーで挑む</p>
+        </div>
+      </div>
+      <p class="category-audience">「社会課題の解決にテクノロジーを活かしたい」という方へ — 17のテーマに対する技術的アドバイスと参考事例</p>
+
+      <div class="callout info" style="margin-bottom: 24px;">
+        <p class="callout-title">自分に関係するテーマを見つけるには</p>
+        <p>17のテーマは<strong>4つのカテゴリ</strong>に分類されています（目次を参照）。全てを読む必要はありません — <strong>自分の関心分野のテーマだけを深掘り</strong>してください。各トピックの冒頭にある<strong>「こんな人向け」</strong>タグも参考にしてください。</p>
+        <p style="margin-top: 6px; font-size: 8.5pt; color: var(--color-text-light);">
+          <strong>医療・福祉・生活</strong>: 医療, バリアフリー, 吃音症, 服薬管理&emsp;
+          <strong>産業・インフラ</strong>: 人材不足, 建設DX, 第一次産業, 交通, 廃炉&emsp;
+          <strong>教育・地域</strong>: 教育格差, 少子化, コミュニティ, フードロス, 貧困, 選挙&emsp;
+          <strong>環境・未来</strong>: 気候変動, 近未来
+        </p>
+      </div>
+
+      <div class="subgroup-banner">
+        <img src="../images/banners/banner_ice_glass.png" alt="">
+        <div class="subgroup-overlay"></div>
+        <p class="subgroup-text">医療・福祉・生活<small>Healthcare, Welfare &amp; Daily Life</small></p>
+      </div>
+
+      <!-- D-1 医療 -->
+      <div class="qa-topic" id="q-medical">
+        <h3><span class="q-badge">Q</span> 医療・介護・福祉</h3>
+        <p class="persona">こんな人向け: 医療AI、介護の人手不足解消、見守りシステム、メンタルヘルス</p>
+        <div class="topic-body">
+        <h4>AI × 医療画像診断</h4>
+        <p>ViT (Vision Transformer) 等の精度が高いモデルを使った画像ベースの医療診断は既に実用段階にあります。AIを使って症例データを増やすデータ拡張の研究も盛んです。</p>
+        <table>
+          <thead><tr><th>サービス</th><th>概要</th><th>注目ポイント</th></tr></thead>
+          <tbody>
+            <tr><td><strong><a href="https://www.aidoc.com/">Aidoc</a></strong></td><td>1回のCTスキャンから14種類の急性所見を同時トリアージ</td><td>感度97%、2026年1月FDA承認</td></tr>
+            <tr><td><strong><a href="https://github.com/rmaphoh/RETFound">RETFound</a></strong></td><td>眼底画像AI基盤モデル。心臓発作・脳卒中リスクも予測</td><td>OSS、$100以下で訓練可能な軽量版あり</td></tr>
+            <tr><td><strong><a href="https://huggingface.co/google/medgemma-4b-it">MedGemma</a></strong></td><td>Google医療特化マルチモーダルモデル（4B/27B）</td><td>Hugging Faceで無料利用可能</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="doc-body">
+    <section class="category-section cat-d" style="--cat-color: var(--color-cat-d);">
+      <div class="qa-topic">
+        <div class="topic-body">
+        <h4>AI × 介護見守り</h4>
+        <p>介護の力仕事以外の<strong>情報面で見守る部分</strong>にAIは非常に有効で、<strong>介護施設の死亡事故はAIで確実に減らせます</strong>。</p>
+        <div class="ref-case">
+          <p class="ref-label">事例 — MediaPipe による転倒検知</p>
+          <p><a href="https://ai.google.dev/edge/mediapipe/solutions/guide"><strong>MediaPipe BlazePose</strong></a>（Google）はブラウザ上でリアルタイムに33キーポイントの骨格推定が可能。<strong>完全0円</strong>で転倒検知プロトタイプを作れます。</p>
+        </div>
+        <div class="ref-case">
+          <p class="ref-label">事例 — 富士通 ミリ波レーダ見守りシステム</p>
+          <p><strong>カメラを一切使わず</strong>、ミリ波レーダーで人の動き・呼吸・筋肉振動を検知。プライバシー × AIは社会実装で極めて重要なテーマ。</p>
+        </div>
+        <div class="ref-case">
+          <p class="ref-label">事例 — 介護ロボット</p>
+          <p><strong>PALRO</strong>（富士ソフト）は厚労省指定の6つの介護予防項目をカバー。<strong>LOVOT</strong>（GROOVE X）はBPSD（認知症の行動・心理症状）の予兆をAIが検知し介護職員に通知。</p>
+        </div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <div class="doc-body">
+
+    <section class="category-section cat-d" id="cat-d-medical-cont" style="--cat-color: var(--color-cat-d);">
+      <div class="qa-topic">
+        <div class="topic-body">
+        <h4>AI × メンタルヘルス</h4>
+        <table>
+          <thead><tr><th>サービス</th><th>概要</th></tr></thead>
+          <tbody>
+            <tr><td><strong><a href="https://woebothealth.com/">Woebot</a></strong></td><td>スタンフォード大開発。認知行動療法（CBT）ベースのAIチャットボット。FDA認定</td></tr>
+            <tr><td><strong><a href="https://www.myflourish.ai/">Flourish</a></strong></td><td>ハーバード大の多施設RCTで効果実証済みのAIメンタルヘルスアプリ</td></tr>
+          </tbody>
+        </table>
+        <h4>AI × 創薬</h4>
+        <table>
+          <thead><tr><th>プロジェクト</th><th>概要</th><th>特徴</th></tr></thead>
+          <tbody>
+            <tr><td><strong>AlphaFold 3</strong></td><td>タンパク質・DNA・RNA・リガンドの立体構造を予測</td><td>物理ベース手法より50%高精度、学術研究は無料</td></tr>
+            <tr><td><strong>Insilico Medicine</strong></td><td>AIで設計された医薬品候補（特発性肺線維症）</td><td>Phase IIa試験で陽性。AIによる創薬成功の画期的事例</td></tr>
+          </tbody>
+        </table>
+        <div class="callout tip">
+          <p class="callout-title">学生プロジェクト案</p>
+          <p>MediaPipe BlazePose → 骨格座標を取得 → 「立っている/倒れている」をルールベースで判定 → 転倒検知アラート。JavaScript + TensorFlow.jsで実現。<strong>高専2〜3年生で十分取り組めます。</strong></p>
+        </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="doc-body">
+
+      <!-- D-2 交通 -->
+      <div class="qa-topic" id="q-transport">
+        <h3><span class="q-badge">Q</span> 公共交通機関・MaaS</h3>
+        <p class="persona">こんな人向け: 交通の衰退、過疎地域の移動手段、位置情報サービス</p>
+        <div class="topic-body">
+        <p>公共交通機関は<strong>有効活用されていない</strong>ことが最大の問題。利用体験を改善し利用率を上げることが交通網の維持に直結。ローカル線はGoogle Mapsですら最新の時刻・位置情報が不正確です。</p>
+        <h4>GTFS（交通オープンデータ）</h4>
+        <p>GTFS は公共交通の時刻表・路線・停留所を記述する世界標準仕様。日本では<strong>714事業者・自治体</strong>がオープンデータを公開。<a href="https://www.gtfs.jp/">GTFS-JP</a>や<a href="https://developer.odpt.org/">ODPT開発者サイト</a>から無料取得可能。</p>
+        <h4>MaaS (Mobility as a Service)</h4>
+        <table>
+          <thead><tr><th>事例</th><th>概要</th><th>特徴</th></tr></thead>
+          <tbody>
+            <tr><td><strong><a href="https://knowroute.jp/">のるーと</a></strong></td><td>西鉄+三菱商事のAIオンデマンド交通</td><td>LINE予約対応、全国展開中</td></tr>
+            <tr><td><strong><a href="https://lp.g3m.jp/">GunMaaS</a></strong></td><td>群馬県MaaS。ルート検索+予約+決済を一括</td><td>マイナンバーカード連携、3万人以上</td></tr>
+            <tr><td><strong><a href="https://www.town.asahi.toyama.jp/">ノッカルあさひまち</a></strong></td><td>住民の自家用車による共助型公共交通</td><td>日本初のモデル</td></tr>
+          </tbody>
+        </table>
+        <div class="ref-case">
+          <p class="ref-label">事例 — Mini Tokyo 3D</p>
+          <p><a href="https://minitokyo3d.com/"><strong>Mini Tokyo 3D</strong></a>は東京の電車をリアルタイム3Dマップ上でアニメーションするOSS。<strong>MITライセンス</strong>でフォーク可能。GTFSデータ差し替えで自分の地域版を作れます。</p>
+        </div>
+        <div class="callout tip">
+          <p class="callout-title">学生プロジェクト案</p>
+          <p><strong>OpenTripPlanner</strong>（OSS経路検索）+ GTFSデータ + OpenStreetMapでローカル路線乗り換え検索を構築可能。公共交通オープンデータチャレンジ2025は賞金総額300万円。</p>
+        </div>
+        </div>
+      </div>
+
+  </div>
+
+  <div class="doc-body">
+
+      <!-- D-3 フードロス -->
+      <div class="qa-topic" id="q-foodloss">
+        <h3><span class="q-badge">Q</span> フードロス</h3>
+        <p class="persona">こんな人向け: 食品廃棄削減、フードバンク、需要予測</p>
+        <div class="topic-body">
+        <p>フードロス削減の実践者が<strong>フードロス以外の部分</strong>で使う労力を削減し、効率よく活動に取り組めるようにすることも重要です。</p>
+        <table>
+          <thead><tr><th>サービス</th><th>概要</th><th>規模</th></tr></thead>
+          <tbody>
+            <tr><td><strong><a href="https://tabete.me/">TABETE</a></strong></td><td>廃棄されそうな食品をレスキュー</td><td>2,900店以上、セブンイレブン試験導入</td></tr>
+            <tr><td><strong>スシロー AI需要予測</strong></td><td>ICチップで年間約10億件のデータ収集、AIが需要を予測</td><td>フードロス最大75%削減</td></tr>
+            <tr><td><strong><a href="https://www.toogoodtogo.com/">Too Good To Go</a></strong></td><td>余剰食品マーケットプレイス</td><td>世界9,000万人以上、2024年に2億食救済</td></tr>
+          </tbody>
+        </table>
+        <div class="ref-case">
+          <p class="ref-label">事例 — フードバンク支援</p>
+          <p>フードバンク山口のGAME（高専生開発）をはじめ、<strong>LINE Bot</strong>で食品の登録・マッチングを行う仕組みはITに不慣れな人でも使える好例。</p>
+        </div>
+        <div class="callout">
+          <p class="callout-title">AI需要予測の実績</p>
+          <p><strong>IKEA</strong>: AI活用で食品廃棄半減、食品コスト3,700万ドル節約。<strong>Winnow Vision</strong>: 厨房AI画像認識で食品コスト2〜8%削減。需要予測で過剰生産を防ぐアプローチは環境負荷軽減と収益改善を両立。</p>
+        </div>
+        </div>
+      </div>
+
+      <div class="subgroup-banner">
+        <img src="../images/banners/banner_gradient_flow.png" alt="">
+        <div class="subgroup-overlay"></div>
+        <p class="subgroup-text">環境・未来<small>Environment &amp; Future</small></p>
+      </div>
+
+      <!-- D-4 気候変動 -->
+      <div class="qa-topic" id="q-climate">
+        <h3><span class="q-badge">Q</span> 気候変動/環境問題</h3>
+        <p class="persona">こんな人向け: 環境負荷軽減、経路最適化、資源効率化</p>
+        <div class="topic-body">
+        <p>AIを使って資源を効率的に運用する活用例:</p>
+        <ul>
+          <li><strong>配達の経路を最適化</strong>し、時間とCO2排出量を削減</li>
+          <li><strong>ロボットの動きの最適化</strong>で電力消費量を削減</li>
+          <li><strong>画像認識でごみ分別</strong>の負担を軽減</li>
+        </ul>
+        <div class="callout tip">
+          <p class="callout-title">共通するポイント</p>
+          <p>いずれも「AIで無駄を見つけて削減する」という共通アプローチです。</p>
+        </div>
+        </div>
+      </div>
+
+  </div>
+
+  <div class="doc-body">
+
+      <div class="subgroup-banner">
+        <img src="../images/banners/banner_warm_mineral.png" alt="">
+        <div class="subgroup-overlay"></div>
+        <p class="subgroup-text">産業・労働・インフラ<small>Industry, Labor &amp; Infrastructure</small></p>
+      </div>
+
+      <!-- D-5 人材不足 -->
+      <div class="qa-topic" id="q-labor">
+        <h3><span class="q-badge">Q</span> 人材不足/業務効率化/自動化</h3>
+        <p class="persona">こんな人向け: 業務自動化、RPA、ドキュメント管理</p>
+        <div class="topic-body">
+        <div class="callout">
+          <p>既存プロセスから入力情報を<strong>明確なデータとして記録</strong>し、同じ入力から同じ出力を目指すのが一般的なアプローチです。</p>
+        </div>
+        <div class="ref-case">
+          <p class="ref-label">事例 — NotebookLMで自己解決を促進</p>
+          <p>Office / Google Workspace系の書類を <span class="tag blue"><a href="https://notebooklm.google.com/" style="color:inherit;border:none;">NotebookLM</a></span> に読み込ませ、メンターに頼らない自己解決を促進。80言語以上対応の音声要約機能も搭載。</p>
+        </div>
+        <div class="ref-case">
+          <p class="ref-label">事例 — 自治体RPA導入</p>
+          <p>佐賀市では15業務で年間1,910時間を削減（<strong>92%削減</strong>）。都道府県の94%、指定都市の100%がRPA導入済み。UiPath Community Edition（無料）で学習可能。</p>
+        </div>
+        </div>
+      </div>
+
+      <!-- D-6 建設 -->
+      <div class="qa-topic" id="q-construction">
+        <h3><span class="q-badge">Q</span> 建設業界DX・3K</h3>
+        <p class="persona">こんな人向け: 現場改善、安全管理AI、日報自動化</p>
+        <div class="topic-body">
+        <p>上層部が現場を理解していない + 効率化が追求されてこなかったことが根本課題。AIで現場の作業風景を<strong>エグゼクティブサマリー化</strong>し、改善レポートを自動作成することで課題を吸い上げられます。</p>
+        <table>
+          <thead><tr><th>活用分野</th><th>事例</th><th>効果</th></tr></thead>
+          <tbody>
+            <tr><td><strong>安全監視</strong></td><td><a href="https://aimos-promotion.com/aimos-safety/">AIMOS</a> — ヘルメット未着用・危険行動を即時検知</td><td>事故発生率20〜50%削減</td></tr>
+            <tr><td><strong>進捗管理</strong></td><td><a href="https://www.openspace.ai/">OpenSpace</a> — 360度カメラで現場記録を自動生成</td><td>25,000sqftの撮影が10分</td></tr>
+            <tr><td><strong>日報自動化</strong></td><td><a href="https://info.nippou.jp/lp/voice">音声AI日報</a> — 話すだけで構造化日報を生成</td><td>管理者確認時間を1/10に</td></tr>
+            <tr><td><strong>デジタルツイン</strong></td><td>清水建設+リコー — AIひび割れ検出→3Dツイン反映</td><td>重要インフラ点検の自動化</td></tr>
+          </tbody>
+        </table>
+        <div class="callout tip">
+          <p class="callout-title">学生プロジェクト案</p>
+          <p>YOLOv8 + Webカメラでヘルメット検知AI（Google Colabで無料）。Whisper API + GPT APIで音声→構造化日報も月数百円。</p>
+        </div>
+        </div>
+      </div>
+
+  </div>
+
+  <div class="doc-body">
+
+      <!-- D-7 第一次産業 -->
+      <div class="qa-topic" id="q-primary">
+        <h3><span class="q-badge">Q</span> 第一次産業・伝統産業</h3>
+        <p class="persona">こんな人向け: スマート農業、技術継承、高齢化対策</p>
+        <div class="topic-body">
+        <p>AI導入と<strong>一番縁がなさそうなところにこそ一番インパクトがある</strong>。これまで効率性追求や新技術導入の動きがなかった場所だからこそ、導入されたらインパクトが大きい。</p>
+        <h4>スマート農業</h4>
+        <table>
+          <thead><tr><th>事例</th><th>概要</th></tr></thead>
+          <tbody>
+            <tr><td><strong><a href="https://www.plant-ect.com/">Plantect</a></strong></td><td>AIで病害予測（精度92%）。全国4,000台以上導入</td></tr>
+            <tr><td><strong><a href="https://agrist.com/">AGRIST</a></strong></td><td>AI自動収穫ロボット。2025年からレンタル開始。農家の声から生まれた</td></tr>
+            <tr><td><strong><a href="https://wagri.naro.go.jp/">WAGRI</a></strong></td><td>農研機構の農業データ連携基盤。223のAPIで気象・農地・収量予測データ提供</td></tr>
+          </tbody>
+        </table>
+        <h4>伝統産業の技術継承</h4>
+        <p>ベテランの動きと素人の動きを<strong>動画認識AI</strong>で比較し、職人と同じ動きができるようアドバイスするAIは全然作れます。</p>
+        <div class="ref-case">
+          <p class="ref-label">事例 — ORGENIUS (LIGHTz)</p>
+          <p>10時間のインタビューから匠の思考プロセスを「脳モデル」としてデジタル化。南部鉄器（10年の修行期間を短縮）やスポーツ分野で実用化。</p>
+        </div>
+        <div class="ref-case">
+          <p class="ref-label">事例 — 3D Gaussian Splatting（文化財アーカイブ）</p>
+          <p>2025年注目の3D再構成技術。従来のフォトグラメトリより大幅に高速。スマホ撮影→AIで3Dモデル化→Web公開。<strong>Nerfstudio</strong>等のOSS実装で学生も利用可能。</p>
+        </div>
+        <div class="callout tip">
+          <p class="callout-title">UXの重要性</p>
+          <p>技術を使い慣れていない人がどう不便なく使えるかが非常に大事。<strong>チャットUI</strong>（LINE Bot等）や<strong>音声UI</strong>など、ユーザーが使い慣れたサービスで提供することがポイント。</p>
+        </div>
+        </div>
+      </div>
+
+  </div>
+
+  <div class="doc-body">
+
+      <div class="subgroup-banner">
+        <img src="../images/banners/banner_pastel_glass.png" alt="">
+        <div class="subgroup-overlay"></div>
+        <p class="subgroup-text">教育・地域社会<small>Education &amp; Community</small></p>
+      </div>
+
+      <!-- D-8 教育 -->
+      <div class="qa-topic" id="q-education">
+        <h3><span class="q-badge">Q</span> 教育格差・学び合い</h3>
+        <p class="persona">こんな人向け: 教育の情報格差、理数教育、地方と都市部の格差</p>
+        <div class="topic-body">
+        <p>AIは<strong>教えることにかなり向いている</strong>。個人に合わせた教え方ができるようになったのであれば、地域や所得による教育格差は減らせるのではないか。</p>
+        <h4>教育AI</h4>
+        <table>
+          <thead><tr><th>サービス</th><th>概要</th><th>規模</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Khanmigo</strong></td><td>Khan AcademyのAIチューター。GPT-4o搭載</td><td>140万人以上、380学区と提携</td></tr>
+            <tr><td><strong>LearnLM</strong></td><td>Google Gemini搭載の教育特化AI</td><td>GPT-4oを31%上回る教育効果</td></tr>
+            <tr><td><strong><a href="https://notebooklm.google.com/">NotebookLM</a></strong></td><td>学習セット、80言語以上の音声要約、講義モード</td><td>30分のAI講義を自動生成（テスト中）</td></tr>
+          </tbody>
+        </table>
+        <h4>理数教育 × 視覚化</h4>
+        <p>学校の学びは<strong>視覚的じゃなくてつまらない</strong>が、理工系が得意な人は頭の中で視覚的イメージを思い浮かべている。<strong>視覚化</strong>で曖昧だった概念が具体的なイメージになる。</p>
+        <h4>数学視覚化AIツール</h4>
+        <table>
+          <thead><tr><th>ツール</th><th>概要</th><th>特徴</th></tr></thead>
+          <tbody>
+            <tr><td><strong><a href="https://animg.app">AnimG</a></strong></td><td>自然言語でManimアニメーションを生成</td><td>ブラウザ動作、インストール不要</td></tr>
+            <tr><td><strong>Math-To-Manim</strong></td><td>Gemini + 6エージェントで数学アニメ全自動生成</td><td>計画→生成→レビュー→修正→レンダリング</td></tr>
+            <tr><td><strong><a href="https://github.com/JazonJiao/Manim.js">Manim.js</a></strong></td><td>p5.jsベースのManimのJS版</td><td>ブラウザでリアルタイム動作</td></tr>
+          </tbody>
+        </table>
+        <div class="ref-case">
+          <p class="ref-label">事例 — Duolingo Max</p>
+          <p>DAU 4,770万人（前年比40%増）、収益10億ドル突破。AIキャラクターとのリアルタイム音声会話を搭載。<strong>AIで148コースを1年未満で開発</strong>（従来は数年規模）。</p>
+        </div>
+        <h4>学び合い × 情報発信</h4>
+        <p>AIによって<strong>情報発信のハードルがさらに下がった</strong>。対面でしか扱われてこなかった情報を文字データに変換し、AIがそれを見つけられる状態にすれば、一部のキャンパスだけの情報が全国に広がる。</p>
+        </div>
+      </div>
+
+  </div>
+
+  <div class="doc-body">
+
+      <!-- D-9 少子化 -->
+      <div class="qa-topic" id="q-birthrate">
+        <h3><span class="q-badge">Q</span> 少子化・跡継ぎ問題</h3>
+        <p class="persona">こんな人向け: 生産性向上、自動化、マッチング</p>
+        <div class="topic-body">
+        <p><strong>生産性を上げること</strong>が非常に大事。<strong>理論的に自動化が可能だがされてこなかった分野</strong>にこそ、AIの一番の得意分野がある。</p>
+        <div class="ref-case">
+          <p class="ref-label">事例 — 自治体AIマッチング</p>
+          <p><strong>TOKYO 縁結び</strong>をはじめ、全国の都道府県の66%がAI婚活マッチングを導入。</p>
+        </div>
+        <div class="ref-case">
+          <p class="ref-label">事例 — 保育ICT</p>
+          <p><strong>CoDMON</strong>のAI午睡見守りシステムが保育現場の負担を軽減。政府補助金制度あり。</p>
+        </div>
+        </div>
+      </div>
+
+      <!-- D-10 コミュニティ -->
+      <div class="qa-topic" id="q-community">
+        <h3><span class="q-badge">Q</span> コミュニティ/助け合い</h3>
+        <p class="persona">こんな人向け: SNS・つながり、地域活性化、ボランティア支援</p>
+        <div class="topic-body">
+        <table>
+          <thead><tr><th>アプローチ</th><th>重視ポイント</th><th>活用技術</th></tr></thead>
+          <tbody>
+            <tr><td><strong>体験/デザイン重視</strong></td><td>to C向けの使いやすさ</td><td><span class="tag"><a href="https://www.figma.com/" style="color:inherit;border:none;">Figma</a></span></td></tr>
+            <tr><td><strong>データベース重視</strong></td><td>共有/投稿/つながり</td><td><span class="tag blue">Firestore</span> <span class="tag blue">Supabase</span></td></tr>
+            <tr><td><strong>リアル体験重視</strong></td><td>リアル世界との接点</td><td><span class="tag green">QR</span> <span class="tag green">AR</span> <span class="tag green">地図API</span></td></tr>
+          </tbody>
+        </table>
+        <div class="ref-case">
+          <p class="ref-label">事例 — フードバンク支援サービス</p>
+          <p>高専生が開発・運用中。<span class="tag blue">LINE Bot</span> で記事投稿できる仕組みで、<strong>ITに不慣れな人を巻き込むことに成功</strong>した好例。</p>
+        </div>
+        </div>
+      </div>
+
+  </div>
+
+  <div class="doc-body">
+
+      <!-- D-11 貧困 -->
+      <div class="qa-topic" id="q-poverty">
+        <h3><span class="q-badge">Q</span> 貧困</h3>
+        <p class="persona">こんな人向け: サービスの民主化、低コスト支援、教育支援</p>
+        <div class="topic-body">
+        <div class="callout info">
+          <p class="callout-title">AIによるサービスの民主化</p>
+          <p>AIを使うと、従来高い人件費のために一部の人しか利用できなかったサービスを、<strong>低コスト・均一クオリティで多くの人に届けられます</strong>。</p>
+        </div>
+        <div class="ref-case">
+          <p class="ref-label">事例 — AI教育支援</p>
+          <p><span class="tag blue">Gemini</span> の学習サポート機能を無料提供。途上国では<strong>RoboTutor</strong>（オフラインAI家庭教師）等も展開。</p>
+        </div>
+        </div>
+      </div>
+
+      <div class="subgroup-banner">
+        <img src="../images/banners/banner_ice_glass.png" alt="">
+        <div class="subgroup-overlay"></div>
+        <p class="subgroup-text">医療・福祉・生活 (続き)<small>Healthcare, Welfare &amp; Daily Life — continued</small></p>
+      </div>
+
+      <!-- D-12 バリアフリー -->
+      <div class="qa-topic" id="q-accessibility">
+        <h3><span class="q-badge">Q</span> バリアフリー</h3>
+        <p class="persona">こんな人向け: 視覚・聴覚支援、アクセシビリティ、音声合成</p>
+        <div class="topic-body">
+        <div class="callout tip">
+          <p class="callout-title">AIによる能力の補完</p>
+          <p>AIは既に<strong>目、耳、口に匹敵する能力</strong>を持っています。画像認識（目）、音声認識（耳）、音声合成（口）の各技術は実用レベル。</p>
+        </div>
+        <p>バリアフリー化の情報は収集/公開されていないものも多く、<strong>AIやアプリの活用の余地が大きい領域</strong>です。</p>
+        </div>
+      </div>
+
+  </div>
+
+  <div class="doc-body">
+
+      <!-- D-13 吃音 -->
+      <div class="qa-topic" id="q-stuttering">
+        <h3><span class="q-badge">Q</span> 吃音症改善</h3>
+        <p class="persona">こんな人向け: 音声認識、会話練習AI、デジタル治療</p>
+        <div class="topic-body">
+        <div class="callout info">
+          <p class="callout-title">講師の個人的な経験</p>
+          <p>私自身が吃音持ちです。全力で応援したいテーマ。<strong>会話の練習に至っては人間と話さなくていい</strong>ので罪悪感やプレッシャーなしで練習できます。私はChatGPTの会話機能で英会話を0から練習し、英検に合格しました。</p>
+        </div>
+        <table>
+          <thead><tr><th>サービス</th><th>概要</th><th>規模</th></tr></thead>
+          <tbody>
+            <tr><td><strong><a href="https://iyaso.ai/">Eloquent</a></strong></td><td>AI × 吃音治療。ゲーミフィケーション型練習 + リアルタイムフィードバック</td><td>200+国、30,000人。SSI-4スコア52.7%改善</td></tr>
+            <tr><td><strong><a href="https://www.stamurai.com/">Stamurai</a></strong></td><td>世界最大の吃音デジタル治療アプリ。DAFリズム発話練習</td><td>10万人以上利用</td></tr>
+            <tr><td><strong>Fluency Friends</strong></td><td>ゲーム形式の吃音治療アプリ（ベルギー発）</td><td>子ども向け、AI音声認識搭載</td></tr>
+          </tbody>
+        </table>
+        <div class="ref-case">
+          <p class="ref-label">事例 — TalkBoost（未踏ジュニア スーパークリエータ認定）</p>
+          <p>ペンダント型デバイスでAIが吃音を自動検出。<strong>高専・中高生世代がスーパークリエータに認定</strong>された実例。<a href="https://jr.mitou.org/">未踏ジュニア</a>は17歳以下対象、最大50万円支援。</p>
+        </div>
+        <div class="callout tip">
+          <p class="callout-title">学生プロジェクト案</p>
+          <p><strong>Web Speech API</strong>でJavaScript数十行の音声認識アプリが作れます。ElevenLabsのScribe v1は吃音音声認識精度98.7%。<strong>完全無料で実現できます。</strong></p>
+        </div>
+        </div>
+      </div>
+
+  </div>
+
+  <div class="doc-body">
+
+      <!-- D-14 服薬 -->
+      <div class="qa-topic" id="q-medication">
+        <h3><span class="q-badge">Q</span> 薬の飲み忘れ・生活管理</h3>
+        <p class="persona">こんな人向け: IoT見守り、スマートリマインダー、高齢者支援</p>
+        <div class="topic-body">
+        <p>単純な固定時間リマインドではなく、<strong>「今、薬飲んでいいですよ」というタイミングでのスマートリマインド</strong>はまだカバーされていない領域。</p>
+        <table>
+          <thead><tr><th>サービス</th><th>概要</th></tr></thead>
+          <tbody>
+            <tr><td><strong><a href="https://www.mytherapyapp.com/ja">MyTherapy</a></strong></td><td>全機能無料のピルリマインダー。服薬記録、残量管理、ヘルスレポート</td></tr>
+            <tr><td><strong><a href="https://www.everydose.ai/">EveryDose</a></strong></td><td>AIが生活パターンを学習し最適タイミングでリマインド</td></tr>
+            <tr><td><strong><a href="https://manoma.jp/lp/parent_care/">ソニー MANOMA</a></strong></td><td>AIゲートウェイ + センサー + カメラの高齢者見守りセット</td></tr>
+            <tr><td><strong>Sharp IoT見守り</strong></td><td>日本初の異メーカー間連携IoT高齢者見守り。ECHONET Liteオープン規格</td></tr>
+          </tbody>
+        </table>
+        <div class="callout tip">
+          <p class="callout-title">学生プロジェクト案</p>
+          <p>ESP32 + 人感センサー + 温湿度センサーで<strong>状況把握型スマートリマインダー</strong>を構築。文脈を把握して「今、薬飲んでいいですよ」とスマートリマインド。ECHONET Liteはオープン規格でIoT学習にも最適。費用は数千円。</p>
+        </div>
+        </div>
+      </div>
+
+  </div>
+
+  <div class="doc-body">
+
+      <div class="subgroup-banner">
+        <img src="../images/banners/banner_bismuth_crystal.png" alt="">
+        <div class="subgroup-overlay"></div>
+        <p class="subgroup-text">社会参加・安全・未来<small>Civic Engagement, Safety &amp; Future Tech</small></p>
+      </div>
+
+      <!-- D-15 選挙 -->
+      <div class="qa-topic" id="q-election">
+        <h3><span class="q-badge">Q</span> 選挙の投票率</h3>
+        <p class="persona">こんな人向け: 政策マッチング、NLP、市民参加プラットフォーム</p>
+        <div class="topic-body">
+        <p>今って<strong>各政党が何やってるか全然わからない</strong>。膨大な情報をAIで理解しやすい形にすることが鍵。自分の特性と政党の特徴量ベクトルを比較して<strong>マッチ度</strong>を出すサービスがあったら面白い。</p>
+        <table>
+          <thead><tr><th>サービス</th><th>概要</th><th>利用者</th></tr></thead>
+          <tbody>
+            <tr><td><strong><a href="https://japanchoice.jp/">JAPAN CHOICE</a></strong></td><td>AIがマニフェストを学習し政策マッチング</td><td>累計約400万人</td></tr>
+            <tr><td><strong><a href="https://github.com/digitaldemocracy2030/kouchou-ai">広聴AI</a></strong></td><td>市民意見を分析・可視化するOSS。v4.0安定版</td><td>日本維新の会等が政策に活用</td></tr>
+            <tr><td><strong><a href="https://pol.is/">Polis</a></strong></td><td>台湾発の市民対話ツール。共通点を探す設計</td><td>OSS</td></tr>
+          </tbody>
+        </table>
+        <div class="callout tip">
+          <p class="callout-title">学生プロジェクト案</p>
+          <p>公約テキストをベクトル化（Embedding API）しコサイン類似度でマッチングツールを構築可能。<a href="https://www.civictech.jp/">Code for Japan</a>のブリゲード（全国70以上）に参加して実践経験を。</p>
+        </div>
+        </div>
+      </div>
+
+  </div>
+
+  <div class="doc-body">
+
+      <!-- D-16 廃炉 -->
+      <div class="qa-topic" id="q-nuclear">
+        <h3><span class="q-badge">Q</span> 廃炉・原子力処理</h3>
+        <p class="persona">こんな人向け: ロボティクス、遠隔操作AI、危険環境センシング</p>
+        <div class="topic-body">
+        <p>廃炉等の未知の問題にはルールベースでの対応が困難。<strong>「考えて行動するロボット」</strong>が最近のホットトピック。</p>
+        <table>
+          <thead><tr><th>事例</th><th>概要</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Telescoロボット</strong></td><td>2024年9月、福島第一原発2号機で初の燃料デブリ取り出し成功。22m伸縮アーム、18自由度</td></tr>
+            <tr><td><strong><a href="https://bostondynamics.com/case-studies/spot-in-fukushima-daiichi/">Boston Dynamics Spot</a></strong></td><td>2022年から福島で運用。LiDAR、映像、放射線量測定。「ゲームチェンジャー」</td></tr>
+            <tr><td><strong>ELLMER</strong></td><td>Nature Machine Intelligence 2025。LLMでロボットが予測不能な環境で長期タスク完遂</td></tr>
+          </tbody>
+        </table>
+        <div class="ref-case">
+          <p class="ref-label">高専生向け — 廃炉創造ロボコン</p>
+          <p>第10回（2025年12月）は国内高専10校+マレーシア+タイの18チーム。<strong>高専生が直接参加できる</strong>唯一無二の機会。<a href="https://fdecomi.fukushima-nct.ac.jp/">公式サイト</a></p>
+        </div>
+        <div class="ref-case">
+          <p class="ref-label">事例 — Google RT-2（Vision-Language-Action Model）</p>
+          <p>画像と言語命令を理解して行動するロボットAI。未知の指示に対し従来の<strong>3倍の成功率</strong>。「考えて行動するロボット」の最前線。</p>
+        </div>
+        <div class="ref-case">
+          <p class="ref-label">事例 — 福島ロボットテストフィールド</p>
+          <p>5年間で<strong>1,100件以上のロボット試験</strong>実施。<strong>81社</strong>が福島のロボット産業に参入。世界一を目指す産業拠点。</p>
+        </div>
+        </div>
+      </div>
+
+  </div>
+
+  <div class="doc-body">
+
+      <!-- D-17 近未来 -->
+      <div class="qa-topic" id="q-future">
+        <h3><span class="q-badge">Q</span> 近未来</h3>
+        <p class="persona">こんな人向け: 自動運転、VR/3D生成、AIによるAI研究</p>
+        <div class="topic-body">
+        <div class="two-col">
+          <div>
+            <h4>AIを使ったAI研究</h4>
+            <p><span class="tag blue">Anthropic</span> は、AIを作るために必要なコード生成に特化したAIを優先して作りました。AIがAIを改善するサイクルが現実に。</p>
+          </div>
+          <div>
+            <h4>AIを使った映像表現・3Dアセット</h4>
+            <p>アニメ/映像制作業界で<strong>テクスチャ・3Dモデル・アニメーション</strong>をAIで自動生成する取り組みが急速に進行中。動画生成AIで新しい表現を実現する事例も増加。</p>
+          </div>
+        </div>
+        <h4>自動運転・リアルワールドAI</h4>
+        <p>自動運転では<strong>YOLO等の画像認識AI</strong>が活用されている。夜間の物体検出、エリアセグメンテーション等が課題。<strong>センシング</strong>が鍵となるリアルワールドAIの代表分野。</p>
+        <h4>VR × AI</h4>
+        <p><strong>3D Gaussian Splatting</strong>のAI生成や<strong>360度パノラマ画像</strong>をAIで生成する取り組みも進んでいる。AIで3Dシーンを自動構築し、VR空間として体験できるようにする研究は今後も発展が期待される。</p>
+        </div>
+      </div>
+
+  </div>
+
+  <!-- ======== Chapter 3: プログラム参加ガイド ======== -->
+  <div class="chapter-page">
+    <div class="cover-bg">
+      <img src="../images/a4-vertical/abstarct/particles_aurora.png" alt="">
+    </div>
+    <div class="cover-overlay"></div>
+    <div class="chapter-content">
+      <p class="chapter-number">Part III</p>
+      <h2 class="chapter-title">プログラム参加ガイド</h2>
+      <p class="chapter-desc">プログラミング、チーム開発、キャリアに関する講師からのアドバイス</p>
+    </div>
+  </div>
+
+  <div class="doc-body">
+
+    <!-- ============================================================
+         Category F: プログラム参加ガイド
+         ============================================================ -->
+    <section class="category-section cat-f page-break" id="cat-f">
+      <div class="category-header">
+        <span class="category-letter">F</span>
+        <div>
+          <h2>プログラム参加ガイド</h2>
+          <p class="category-desc">プログラミング、チーム開発、キャリアに関する講師からのアドバイス</p>
+        </div>
+      </div>
+      <p class="category-audience">「プロジェクトをどう進めたらいいかわからない」「プログラミングに不安がある」という方へ</p>
+
+      <div class="qa-topic" id="q-programming">
+        <h3><span class="q-badge">Q</span> プログラミングへの苦手意識</h3>
+        <div class="topic-body">
+        <p>私は授業で習うプログラミングに対して否定的です。概念的な知識は役に立つが、学んでいる言語は古いし、今はライブラリやAIの力で楽になっているのに授業ではバカ真面目にやってしまっている。<strong>授業のプログラミングが嫌いでも全然構わない。</strong></p>
+        <h4>プログラミングに対する考え方</h4>
+        <ul>
+          <li>プログラミングは<strong>あくまで手段</strong> — 課題解決やアイデアを形にするためにある</li>
+          <li>AIの時代、<strong>人間が自分でコードを書ける必要は必ずしもない</strong> — 全体像やレベルの高い意思決定に集中すべき</li>
+          <li>AIに書けないコードは今やほとんどない — インターネットに情報がある限り基本的に実装可能</li>
+          <li>タイピング速度も関係ない — 音声入力やAIでどうにでもなる</li>
+          <li><strong>やりすぎて失敗するぐらいがちょうどいい</strong> — 安全なルートに逃げる人よりも挑戦する人を評価する</li>
+          <li>やってみて失敗するのは<strong>大歓迎</strong> — ちょっと<strong>出しゃばりぐらい</strong>でもいい</li>
+          <li>あなたが<strong>変わっていること</strong>や<strong>夢中になれること</strong>を大事にしてほしい</li>
+        </ul>
+        <div class="callout">
+          <p>授業でプログラミングができないからといってプライベートでも苦手とは限らない。むしろ<strong>無茶苦茶楽しい</strong>かもしれない。<strong>今回教えることは授業とは結構違う。</strong>企画参加が初めてなのは全然問題ない。遠慮せずにやってほしい。</p>
+          <p>（講師自身も授業が始まる前にプログラミングを始めたが、授業が始まってからプログラミングがちょっと嫌いになりかけた経験がある。だから授業のことは全然関係ない。）</p>
+        </div>
+        </div>
+      </div>
+
+      <div class="qa-topic" id="q-ai-knowledge">
+        <h3><span class="q-badge">Q</span> AIの知識は必要か</h3>
+        <div class="topic-body">
+        <p><strong>AIの知識はAIを使うのに必要ない。</strong>AIを使ってAIを使えるし、AIを使って作れる。</p>
+        <ul>
+          <li>AIの思考プロセスは人間の脳や考え方を模倣して作られたもの — 思考プロセス的にはムズくない</li>
+          <li>優れたAIを作るために編み出された手法は<strong>人間にも応用できる</strong></li>
+          <li>基礎的な部分は数学だが、応用的な部分は<strong>レゴみたいにブロックを組み合わせているだけ</strong></li>
+          <li>四則演算すらいらない</li>
+          <li>AIは色んな手段で使える — <strong>一番使いやすいやり方</strong>でやったらいい</li>
+        </ul>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <div class="doc-body">
+
+    <section class="category-section cat-f">
+
+      <div class="qa-topic" id="q-love-programming">
+        <h3><span class="q-badge">Q</span> プログラミングを好きになるには</h3>
+        <div class="topic-body">
+        <p><strong>プログラミングを使って何かを作るという体験</strong>があるといい。プログラミング自体を目的とする活動はあまり好ましくない。モノやソフトウェアを作って<strong>アイデアを形にしたり、動いているところを見たり、人に使ってもらえる</strong>のがすごく楽しい。</p>
+        <h4>苦手意識がある人へのおすすめ</h4>
+        <table>
+          <thead><tr><th>ツール</th><th>概要</th><th>おすすめポイント</th></tr></thead>
+          <tbody>
+            <tr><td><strong><a href="https://sonic-pi.net/">Sonic Pi</a></strong></td><td>プログラミングで音楽を作れる</td><td>聴覚で楽しめる、最小限のコード</td></tr>
+            <tr><td><strong><a href="https://openscad.org/">OpenSCAD</a></strong></td><td>プログラミングで3Dモデルを作れる</td><td>立体物として出力可能</td></tr>
+            <tr><td><strong><a href="https://p5js.org/">p5.js</a></strong></td><td>アート・ビジュアル表現向け</td><td>最小限の労力で視覚的に面白いアウトプット</td></tr>
+            <tr><td><strong><a href="https://www.python.org/">Python</a></strong></td><td>汎用プログラミング言語</td><td>簡単だからおすすめ。自分で書きたいこだわりがある人に</td></tr>
+            <tr><td><strong>HTML</strong></td><td>ウェブページの基礎</td><td>ウェブ上で動くものを作る第一歩</td></tr>
+          </tbody>
+        </table>
+        <div class="callout tip">
+          <p class="callout-title">段階的な成功体験</p>
+          <p>Week 1で<a href="https://v0.dev/"><strong>v0</strong></a>を使って<strong>確実に全員が作れる</strong>体験をし、だんだん使う知識が増えていく設計にしています。プログラミングは課題解決だけでなく、<strong>面白い表現をしたり価値を生み出すため</strong>にもある。</p>
+        </div>
+        </div>
+      </div>
+
+      <div class="qa-topic" id="q-solo">
+        <h3><span class="q-badge">Q</span> 一人参加について</h3>
+        <div class="topic-body">
+        <p><strong>一人参加でも全く問題ない。</strong>作業量としては1人で十分こなせます。</p>
+        <ul>
+          <li>1人の方がやりたいことができる場合もある — <strong>尖ったもの</strong>が作れるし、何にも邪魔されない</li>
+          <li>個人参加でも<strong>メンター</strong>がつく — 特性を踏まえて振っている</li>
+          <li>個人参加者同士でコミュニティを作って盛り上がるのもおすすめ — 緩い感じのチームのようなもの</li>
+          <li>個人参加者は全体の<strong>約1/4</strong>（<strong>20〜30人</strong>くらい）はいそう</li>
+          <li>集まっている個人メンバーで合体してチームを組むのもOK</li>
+        </ul>
+        <div class="callout info">
+          <p class="callout-title">注意点</p>
+          <p>個人参加だとアイデアが多角的に捉えられないことが課題になりうる。<strong>目の前のタスクに視野を取られないように注意。</strong>メンターと積極的にコミュニケーションを取ってください。</p>
+        </div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <div class="doc-body">
+
+    <section class="category-section cat-f">
+
+      <div class="qa-topic" id="q-teamdev">
+        <h3><span class="q-badge">Q</span> チーム開発のコツ</h3>
+        <div class="topic-body">
+        <h4>役割分担のパターン</h4>
+        <table>
+          <thead><tr><th>パターン</th><th>概要</th></tr></thead>
+          <tbody>
+            <tr><td><strong>ペア開発</strong></td><td>2人でペアを組み、開発段階・レビュー段階で協力</td></tr>
+            <tr><td><strong>CEO + エンジニア</strong></td><td>対外的な方向性・スライドを担当する人 + 開発に集中する人</td></tr>
+            <tr><td><strong>アジャイル式</strong></td><td>プロダクトオーナー（方向性）+ プロジェクトマネージャー（スケジュール・障壁除去）+ 開発者</td></tr>
+            <tr><td><strong>ウォーターフォール式</strong></td><td>最初にみんなで要件を話し合って決め、それを作る</td></tr>
+          </tbody>
+        </table>
+        <h4>おすすめツール</h4>
+        <table>
+          <thead><tr><th>用途</th><th>ツール</th><th>補足</th></tr></thead>
+          <tbody>
+            <tr><td><strong>プロジェクト管理</strong></td><td><span class="tag blue"><a href="https://www.notion.so/" style="color:inherit;border:none;">Notion</a></span></td><td>ドキュメント・タスク管理・Wiki。カンバンボードも使える</td></tr>
+            <tr><td><strong>デザイン</strong></td><td><span class="tag blue"><a href="https://www.figma.com/" style="color:inherit;border:none;">Figma</a></span></td><td>UIデザイン・プロトタイプ。リアルタイム共同編集</td></tr>
+            <tr><td><strong>ソースコード管理</strong></td><td><span class="tag blue"><a href="https://github.com/" style="color:inherit;border:none;">GitHub</a></span></td><td>Git操作もAIに任せられる。今の時代でも普通に使う</td></tr>
+            <tr><td><strong>資料共有</strong></td><td><span class="tag green">Google Drive</span></td><td>スライド作成、資料管理に最適</td></tr>
+            <tr><td><strong>個人メモ</strong></td><td><span class="tag green">Google Keep</span></td><td>ちょっと使うならおすすめ</td></tr>
+          </tbody>
+        </table>
+        <div class="callout tip">
+          <p class="callout-title">最も重要なこと</p>
+          <p><strong>カンバン方式は絶対に導入すべき。</strong>全員がどのタスクに取り組んでいるか・進捗が一目でわかる。チーム開発で最も重視しているのは<strong>透明性</strong> — あらゆる情報に知ろうと思えば瞬時にアクセスできる状態が非常に重要。</p>
+        </div>
+        <div class="callout info">
+          <p class="callout-title">よくある落とし穴</p>
+          <p>チーム開発で開発速度が速くなるわけではなく、人数が増えるほど線形的にできることが増えるわけでもない。<strong>スケジュールには余裕を持つ</strong>こと。<strong>最終決定を持つ人</strong>と<strong>進捗管理の担当</strong>を明確にしておくことが大事。なるべくメンバーが平日でも作業できるようにすること。</p>
+        </div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <div class="doc-body">
+
+    <section class="category-section cat-f" id="cat-f-cont">
+
+      <div class="qa-topic" id="q-career">
+        <h3><span class="q-badge">Q</span> キャリア・進路</h3>
+        <div class="topic-body">
+        <h4>ポートフォリオのアドバイス</h4>
+        <ul>
+          <li>なるべく<strong>ウェブサイトで動く状態</strong>にしておく</li>
+          <li>面接で実際に自分が作ったものを動かしてデモを見せられると非常に強い</li>
+          <li>実際に運用して<strong>利用者数を追跡</strong>するとさらに説得力が増す</li>
+          <li>机上の文字だけでなく、<strong>即戦力であること</strong>を示す</li>
+        </ul>
+        <h4>実践教育プログラム参加の価値</h4>
+        <ul>
+          <li>講師自身がまさに<strong>実践教育に参加して人生が変わった</strong>側の人間 — 変化があるのは<strong>100%間違いない</strong></li>
+          <li>今までやったことない挑戦をするのだから学びがないわけがない</li>
+          <li>なるべく<strong>やったことないことに挑戦してほしい</strong> — 今のあなたが出せる<strong>全力を出すことが成長につながる</strong></li>
+          <li>パートナー企業からの<strong>高専採用のきっかけ</strong>になるケースがある（例：<strong>Future</strong>がこれまで高専採用を行っていなかったが、これをきっかけに採用を開始）</li>
+          <li><strong>ビジネス目線を持ったエンジニア</strong>は企業からの評価が高い</li>
+          <li>参加経験はかなりポジティブに評価される</li>
+          <li>テクノ進学では<strong>東京大学</strong>に合格している人が何人も輩出されている</li>
+        </ul>
+        <h4>olienttechのネットワーク</h4>
+        <ul>
+          <li><strong>松尾研究室</strong>と関係のある企業との接点がある</li>
+          <li>スポンサーの中には<strong>Preferred Networks（PFN）</strong>にも出社している方がおり、そこから案件が来る可能性もある</li>
+          <li>olienttechメンバーは<strong>東大の研究室の人が多い</strong>ので、進学に関しても何かしらの接点がある</li>
+          <li>現在<strong>システム開発プロジェクトが複数進行中</strong> — 参加者が<strong>開発インターン</strong>として参加できる可能性がある</li>
+          <li><strong>テックカフェ</strong>（進路・就職支援）や企業との<strong>マッチングをサポートする企画</strong>も頻繁に開催 — リアルな企業の声が聞ける貴重な機会</li>
+        </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="doc-body">
+    <section class="category-section cat-f">
+      <div class="qa-topic">
+        <div class="topic-body">
+        <h4>過去の参加者の進路実績</h4>
+        <ul>
+          <li>IT系：<strong>サイバーエージェント</strong>、<strong>チームラボ</strong>、<strong>Future</strong>など大手企業への就職実績あり</li>
+          <li>確実に参加で<strong>箔がつく</strong>し、コミュニティのレベルは高い</li>
+        </ul>
+        <div class="callout">
+          <p>ユーザー目線で<strong>どうやったら良くなるか</strong>という目的意識を持って、自分の中で改善を繰り返せる人がすごく欲しい。今の状態で本当に運用ができるのか、実際に使われたらどのようなインパクトを出せるのかを予測しながらどんどん良くしていける人。</p>
+        </div>
+        <h4>起業・AI活用の可能性</h4>
+        <p>AIを使った起業は今非常に増えている。日本のAI受け入れ意欲は世界最低レベルとも言われているが、<strong>だからこそ死ぬほど儲かる</strong>。社会を変えるほどのインパクトがあるのにやろうとしない人がいるため、大企業の客が一気に流れるチャンス。<strong>今全員が同じスタートラインに立っている。</strong></p>
+        </div>
+      </div>
+
+    </section>
+
+  <footer class="doc-footer">
+    <p>&copy; 2026 OLIENT TECH Inc. All rights reserved.</p>
+    <p>本資料は実践教育プログラム 2026 Spring の受講者向けに作成されたものです。</p>
+  </footer>
+  </div>
+
+  <script src="pdf-export.js"></script>
+
+</body>
+</html>

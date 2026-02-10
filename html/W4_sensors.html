@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 4: センサーとスマホアプリ — 実践教育プログラム 2026 Spring</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="viewer-bar no-print">
+    <span class="viewer-title">W4 センサーとスマホアプリ</span>
+    <span class="viewer-meta">OLIENT TECH 2026 Spring</span>
+    <button class="viewer-pdf-btn" onclick="exportPDF('W4_sensors.pdf')" title="PDFファイルとしてダウンロードします">&#x2913; PDF保存</button>
+  </div>
+
+  <!-- ======== Cover Page ======== -->
+  <div class="cover-page">
+    <div class="cover-bg">
+      <img src="../images/a4-vertical/mineral/section_liquid_chrome_wave.jpg" alt="">
+    </div>
+    <div class="cover-overlay"></div>
+    <div class="cover-content">
+      <p class="cover-program">OLIENT TECH 実践教育プログラム 2026 Spring</p>
+      <p class="cover-week">WEEK 4</p>
+      <h1 class="cover-title">センサーとスマホアプリ</h1>
+      <p class="cover-subtitle">スマホ内蔵のカメラやセンサーを活用し、現実世界で役に立つアプリにする</p>
+      <div class="cover-meta">
+        <span>講師: 上津原 和弘</span>
+        <span>2026 Spring</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-body paged">
+
+  <!-- ======== Page 1: Header + 現実世界 + Web APIs ======== -->
+  <!-- doc-header ~170px
+       Section 1: h2(75) + p×3lines(94) + p×2lines(66) + callout.tip(~148) = ~383
+       Section 2: h2(75) + h3(48) + p×3lines(94) + callout.info(~170) = ~387
+       Collapses: ~50px  |  Total ≈ 890px -->
+  <div class="page">
+    <header class="doc-header">
+      <p class="program-label">OLIENT TECH 実践教育プログラム 2026 Spring</p>
+      <h1>センサーとスマホアプリ</h1>
+      <p class="subtitle">スマホ内蔵のカメラやセンサーを活用し、現実世界で役に立つアプリにする</p>
+      <div class="meta">
+        <span>Week 4</span>
+        <span>|</span>
+        <span>講師: 上津原 和弘</span>
+      </div>
+    </header>
+
+    <section>
+      <h2>1. アプリは現実世界の問題を解決する手段</h2>
+      <p>ここまでのWeekでは、AIを使ったコード生成やデータベースの活用を学んできました。しかし、アプリの本質は「現実世界の問題を解決すること」にあります。画面の中だけで完結するアプリよりも、カメラやセンサーを通じて現実世界と繋がるアプリの方が、ユーザーにとって本当に価値のあるものになります。</p>
+      <p>今週は、スマートフォンに内蔵されたセンサー群をWeb APIから活用する方法を学び、さらにPWA技術でアプリとしてインストール可能にするところまでを扱います。</p>
+
+      <div class="callout tip">
+        <p class="callout-title">現実世界との接点がアプリの価値を高める</p>
+        <p>QRコードでチケットを管理する、ジャイロセンサーでコンパスを作る、バイブで触覚フィードバックを返す――ブラウザだけでこれらが実現できる時代です。センサーを活用して、アプリの可能性を広げましょう。</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>2. センサー入門</h2>
+
+      <h3>Web APIs: アプリの手足</h3>
+      <p>ブラウザで出来ることは意外と多く、9軸センサ、バイブレーション、Bluetooth、USB制御など、従来ネイティブアプリが必要だった機能もブラウザから利用可能になっています。これらは <a href="https://developer.mozilla.org/en-US/docs/Web/API" target="_blank"><span class="tag blue">Web API</span></a> として標準化されており、JavaScriptから呼び出すことができます。</p>
+
+      <div class="callout info">
+        <p class="callout-title">動作環境について</p>
+        <p><span class="tag green">Android</span> x <span class="tag blue">Chrome</span> x マナーモードOFFの組み合わせが最も確実に動作します。iPhoneではセキュリティ上の制限により、一部のWeb APIが動作しない場合があります。なお、多くのセンサーAPIは<strong>HTTPS環境でのみ</strong>利用可能です（<code>localhost</code> は例外）。</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- ======== Page 2: QRコード + ジャイロセンサー ======== -->
+  <!-- h3(48) + p×3lines(94) + steps×3(~150) + callout(~148)
+       + h3(48) + p×3lines(94) + steps×3(~165)
+       Collapses: ~20px  |  Total ≈ 770px -->
+  <div class="page">
+    <section>
+      <h3>QRコードを活用しよう</h3>
+      <p><span class="tag">QRコード</span> を使えば、チケット管理、荷物追跡、イベント受付など、現実世界の情報をアプリに取り込む多くのユースケースに対応できます。ブラウザからカメラにアクセスするには <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices" target="_blank">MediaDevices API</a> を使用し、読み取りには <a href="https://github.com/nicolegoebel/jsQR" target="_blank">jsQR</a> などのライブラリを組み合わせます。</p>
+
+      <ol class="steps">
+        <li><strong>プロンプトを入力する:</strong> v0で「QRコードを使ったチケットアプリを作って」と入力します。</li>
+        <li><strong>生成結果を確認する:</strong> イベント作成とQRコード表示ができるアプリが生成されます。</li>
+        <li><strong>運営スキャン機能を追加する:</strong> 必要に応じて「運営がスキャンするページも作って」と追加指示を出します。</li>
+      </ol>
+
+      <div class="callout">
+        <p class="callout-title">ヒント</p>
+        <p>QRコードがあれば、チケット、荷物追跡、来場者管理など可能性は大きく広がります。Week 3で学んだデータベースと組み合わせることで、より実用的なアプリを構築できます。</p>
+      </div>
+
+      <h3>ジャイロセンサーを活用しよう</h3>
+      <p><span class="tag">ジャイロセンサー</span> を使えば、スマートフォンの傾きや向きを検知し、コンパスや水平器といった実用的な機能を実現できます。ブラウザでは <a href="https://developer.mozilla.org/en-US/docs/Web/API/DeviceOrientationEvent" target="_blank">DeviceOrientation API</a> を通じて端末の姿勢情報（alpha / beta / gamma）を取得できます。</p>
+
+      <ol class="steps">
+        <li><strong>プロンプトを入力する:</strong> v0で「ジャイロセンサーを使ったコンパスアプリを作って」と入力します。</li>
+        <li><strong>スマホで開く:</strong> PCでもコンパスは表示されますが、センサーが搭載されていないため、<code>Publish</code> してスマホで開きます。</li>
+        <li><strong>動作を確認する:</strong> ボタンを押すとスマホの向きに応じてコンパスが動きます。</li>
+      </ol>
+    </section>
+  </div>
+
+  <!-- ======== Page 3: ジャイロ補足 + バイブ ======== -->
+  <!-- two-col(~280) + h3(48) + p×2lines(66) + steps×3(~150)
+       + callout.warning(~176)
+       Collapses: ~30px  |  Total ≈ 690px -->
+  <div class="page">
+    <section>
+      <div class="two-col">
+        <div>
+          <h4>活用のポイント</h4>
+          <ul>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API" target="_blank"><span class="tag blue">GPS</span></a> や <span class="tag blue">マップAPI</span> との併用で、ナビゲーションアプリなどに拡張可能</li>
+            <li>AR（拡張現実）的な体験にも応用できる</li>
+          </ul>
+        </div>
+        <div>
+          <div class="callout warning mt-0" style="margin: 0;">
+            <p class="callout-title">iPhoneでの注意点</p>
+            <p class="mb-0">iPhoneでは <code>DeviceOrientationEvent.requestPermission()</code> によるユーザー許可が必要です。また座標系の違いにより、コンパスの回転方向が逆転することがあります。必要に応じてv0に修正を依頼してください。</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>バイブを活用しよう</h3>
+      <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Vibration_API" target="_blank"><span class="tag">Vibration API</span></a> を使えば、視覚だけでなく触覚によるフィードバックをユーザーに提供できます。ゲームやアラートなど、ユーザー体験を豊かにする手段として有効です。</p>
+
+      <ol class="steps">
+        <li><strong>プロンプトを入力する:</strong> v0で「バイブを使って、触覚で楽しめるアプリを作って」と入力します。</li>
+        <li><strong>スマホで開く:</strong> <code>Publish</code> してスマホのブラウザで開きます。</li>
+        <li><strong>動作を確認する:</strong> ボタンをタップするとバイブレーションが発動します。</li>
+      </ol>
+
+      <div class="callout warning">
+        <p class="callout-title">バイブが動作しない場合</p>
+        <p>マナーモードや端末設定でバイブレーションを無効にしている場合は発動しません。テスト時はマナーモードをOFFにしてください。また、<strong>iOSのSafariはVibration APIに対応していない</strong>ため、iPhoneではバイブ機能は利用できません。</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- ======== Page 4: スマホアプリ化 + PWA詳細 ======== -->
+  <!-- h2(75) + h3(48) + p(~60) + two-col(~220) + h3(48) + p×1line(38)
+       + steps×4(~225) + callout.info(~250)
+       Collapses: ~50px  |  Total ≈ 910px -->
+  <div class="page">
+    <section>
+      <h2>3. スマホアプリ化</h2>
+
+      <h3>アプリだと思ったらブラウザ!?</h3>
+      <p><a href="https://web.dev/progressive-web-apps/" target="_blank"><span class="tag">PWA</span></a>（Progressive Web Application）とは、「インストール」できるWebアプリのことです。軽量なブラウザ上にWebアプリを載せることで、単体アプリとしての動作を可能にします。一度の開発でPC・スマホ・Webの全てに対応できる注目の技術です。</p>
+
+      <div class="two-col">
+        <div>
+          <h4>PWAのメリット</h4>
+          <ul>
+            <li>アプリストアを経由せずインストール可能</li>
+            <li>ホーム画面にアイコンが追加される</li>
+            <li>PC・スマホ・Webを一度の開発でカバー</li>
+            <li>追加開発でオフライン動作にも対応可能</li>
+          </ul>
+        </div>
+        <div>
+          <h4>対応方法</h4>
+          <ul>
+            <li><code>manifest.json</code> と <code>Service Worker</code> を追加するだけ</li>
+            <li>HTMLだけのシンプルなサイトでも適用可能</li>
+            <li>特別なフレームワークは不要（v0が自動生成してくれる）</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>インストールできるアプリを作ろう</h3>
+      <p>実際にPWA対応のアプリを作成し、インストールできることを確認しましょう。</p>
+
+      <ol class="steps">
+        <li><strong>プロンプトを入力する:</strong> v0で「PWAに対応したスマホアプリを作って」と入力します。</li>
+        <li><strong>公開URLを取得する:</strong> <code>Publish</code> して公開URLを取得します。</li>
+        <li><strong>インストールボタンを確認する:</strong> PCならブラウザの検索バー横にインストールボタンが表示されます。スマホではポップアップが表示されます。</li>
+        <li><strong>インストールして実行する:</strong> インストール後、アプリ一覧に表示され単体で実行できるようになります。</li>
+      </ol>
+
+      <div class="callout info">
+        <p class="callout-title">インストールがうまくいかない場合</p>
+        <p>スマホはインストール判定条件がPCより厳しいため、先にPCでテストすることを推奨します。Chromeでは <code>manifest.json</code> に <code>name</code>、<code>icons</code>（192px・512px）、<code>start_url</code>、<code>display</code> が正しく設定されていること、さらにサイトがHTTPSで配信されていることが必須条件です。動かない場合はDevToolsの <strong>Application</strong> タブでManifestの警告を確認するか、ChatGPTに分析してもらいましょう。</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- ======== Page 5: オフライン補足 + 課題 ======== -->
+  <!-- callout.tip(~100) + task-box(~400)
+       Collapses: ~30px  |  Total ≈ 530px -->
+  <div class="page">
+    <section>
+      <div class="callout tip">
+        <p class="callout-title">オフライン動作について</p>
+        <p>PWAではService Workerのキャッシュ戦略を実装することで、オフライン環境でもアプリを動作させることが可能です。Chromeではインストール時にService Workerの登録が求められるため、v0で生成したコードに含まれているか確認しましょう。まずはインストール可能にすることを優先し、オフライン対応は段階的に進めてください。</p>
+      </div>
+    </section>
+
+    <div class="task-box">
+      <h3>今週の課題</h3>
+      <ul>
+        <li><strong>課題1: インストールできるようにしよう</strong><br>制作アプリをPWA対応し、インストールできることを確認した後、公開URLを提出してください。</li>
+        <li><strong>課題2: 現実世界で役に立つアプリを作ろう</strong><br>センサーやカメラを活用して現実世界の問題を解決する機能を作り、公開URLを提出してください。</li>
+      </ul>
+      <h4>提出方法</h4>
+      <ul>
+        <li>課題提出チャンネルにてURLを共有してください（後から更新可能）。</li>
+      </ul>
+      <div class="callout warning" style="margin-bottom: 0;">
+        <p class="callout-title">注意</p>
+        <p class="mb-0">課題告知メッセージに<strong>リアクション必須</strong>です。また、不完全であっても<strong>まず提出することを優先</strong>してください。完成度は後から高められます。</p>
+      </div>
+    </div>
+
+    <section class="appendix">
+      <h2>Appendix: もっと知りたい人へ</h2>
+
+      <h3>学習リソース</h3>
+      <p>今週の内容をさらに深めたい方は、以下のリソースを活用してください。</p>
+      <div class="two-col">
+        <div>
+          <h4>Web APIs</h4>
+          <p class="text-small">ブラウザが提供するWeb APIは多岐にわたります。<a href="https://developer.mozilla.org/en-US/docs/Web/API" target="_blank">MDN Web API リファレンス</a> で一覧を確認し、気になった機能をv0に投げて実際にアプリを作らせてみましょう。試行錯誤が最良の学習方法です。</p>
+        </div>
+        <div>
+          <h4>PWA &amp; モダンWeb開発</h4>
+          <p class="text-small"><a href="https://web.dev/" target="_blank">web.dev</a> にはPWAの構築ガイドやパフォーマンス最適化のベストプラクティスが掲載されています。センサーAPIやPWAの実装例も含む自作の教材も併せて活用してください。</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ======== Page 6: 用語解説 + Footer ======== -->
+  <div class="page">
+    <section class="appendix">
+      <h3>用語解説</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>用語</th>
+            <th>解説</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>ジャイロセンサー</strong></td>
+            <td>相対的な傾きを取得するセンサー。安定した値を返す。9軸センサーと組み合わせて補正に使用。</td>
+          </tr>
+          <tr>
+            <td><strong>9軸センサー（加速度+地磁気）</strong></td>
+            <td>加速度3軸・ジャイロ3軸・地磁気3軸を統合し、絶対的な傾きを導出する。単体では不安定。</td>
+          </tr>
+          <tr>
+            <td><strong>Bluetooth</strong></td>
+            <td>近距離無線通信技術。Web Bluetooth APIを通じてブラウザから周辺デバイスと通信可能。</td>
+          </tr>
+          <tr>
+            <td><strong>QRコード</strong></td>
+            <td>二次元コード。多少の汚れや破損があっても読み取れる高い堅牢性が特徴。</td>
+          </tr>
+          <tr>
+            <td><strong>バイブ</strong></td>
+            <td>スマートフォンに内蔵された小型モーターによる振動機能。Vibration APIで制御可能。</td>
+          </tr>
+          <tr>
+            <td><strong>PWA</strong></td>
+            <td>Progressive Web Applicationの略。Webアプリをインストール可能なアプリとして動作させる技術。</td>
+          </tr>
+          <tr>
+            <td><strong>manifest.json</strong></td>
+            <td>PWAのアプリ名、アイコン、テーマカラーなどの基本情報を定義する設定ファイル。</td>
+          </tr>
+          <tr>
+            <td><strong>HTML</strong></td>
+            <td>HyperText Markup Languageの略。Webサイトの構造と要素を定義するマークアップ言語。</td>
+          </tr>
+          <tr>
+            <td><strong>フィードバック</strong></td>
+            <td>ユーザーの入力や操作に対するシステムからの反応。視覚・聴覚・触覚など多様な手段がある。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer class="doc-footer">
+      <p>&copy; 2026 OLIENT TECH Inc. All rights reserved.</p>
+      <p>本資料は実践教育プログラム 2026 Spring の受講者向けに作成されたものです。</p>
+    </footer>
+  </div>
+
+  </div><!-- .doc-body.paged -->
+
+  <script src="pdf-export.js"></script>
+
+</body>
+</html>

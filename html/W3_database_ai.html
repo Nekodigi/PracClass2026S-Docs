@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 3: データベース x AI — OLIENT TECH 実践教育プログラム 2026 Spring</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="viewer-bar no-print">
+    <span class="viewer-title">W3 データベース × AI</span>
+    <span class="viewer-meta">OLIENT TECH 2026 Spring</span>
+    <button class="viewer-pdf-btn" onclick="exportPDF('W3_database_ai.pdf')" title="PDFファイルとしてダウンロードします">&#x2913; PDF保存</button>
+  </div>
+
+  <!-- ======== Cover Page ======== -->
+  <div class="cover-page">
+    <div class="cover-bg">
+      <img src="../images/a4-vertical/mineral/stack_bismuth_tower.jpg" alt="">
+    </div>
+    <div class="cover-overlay"></div>
+    <div class="cover-content">
+      <p class="cover-program">OLIENT TECH 実践教育プログラム 2026 Spring</p>
+      <p class="cover-week">WEEK 3</p>
+      <h1 class="cover-title">データベース x AI</h1>
+      <p class="cover-subtitle">実用的な機能を兼ね備えた本格的なアプリの開発</p>
+      <div class="cover-meta">
+        <span>講師: 上津原 和弘</span>
+        <span>2026 Spring</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-body paged">
+
+  <!-- ======== Page 1: Header + イントロ + DB種類 ======== -->
+  <div class="page">
+    <header class="doc-header">
+      <p class="program-label">OLIENT TECH 実践教育プログラム 2026 Spring</p>
+      <h1>データベース x AI</h1>
+      <p class="subtitle">実用的な機能を兼ね備えた本格的なアプリの開発</p>
+      <div class="meta">
+        <span>Week 3</span>
+        <span>|</span>
+        <span>講師: 上津原 和弘</span>
+      </div>
+    </header>
+
+    <section>
+      <h2>1. ほとんどのWebアプリにあるもの &mdash; データベース!</h2>
+      <p>
+        Webアプリケーションを開発するうえで、データの永続化は避けて通れないテーマです。
+        ユーザー情報、投稿内容、設定値など、ほとんどすべてのWebアプリはデータベースに支えられています。
+        今週は、データベースの基本概念を学び、さらにAI機能を組み込むことで、実用的かつ本格的なアプリを開発する手法を身につけます。
+      </p>
+    </section>
+
+    <section>
+      <h2>2. データベース入門</h2>
+
+      <h3>データベースの種類</h3>
+
+      <div class="two-col">
+        <div>
+          <h4>従来技術: SQL <span class="tag blue">SQL</span></h4>
+          <p>スプレッドシートのような表構造でデータを管理する方式です。</p>
+          <p class="bold">課題:</p>
+          <ul>
+            <li>常時稼働型で高コスト</li>
+            <li>大量アクセスに弱い</li>
+            <li>事前にデータ構造を厳密に定める必要がある</li>
+          </ul>
+        </div>
+        <div>
+          <h4>NoSQL <span class="tag green">JSON</span></h4>
+          <p>JSONベースでデータを格納する方式です。</p>
+          <p class="bold">メリット:</p>
+          <ul>
+            <li>プログラム内のデータ構造をそのままアップロード可能</li>
+            <li>リクエスト回数に応じた課金で無駄がない</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout tip">
+        <p class="callout-title">SQLを使いたい方へ</p>
+        <p>SQLデータベースを使いたい場合は、<strong><a href="https://supabase.com/" target="_blank">Supabase</a></strong>などのサービスがオススメです。PostgreSQLをベースにしたモダンなバックエンドをすぐに構築できます。</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- ======== Page 2: Firestore入門 + サンプルコード ======== -->
+  <div class="page">
+    <section>
+      <h3>Firestore入門</h3>
+      <p>
+        <span class="tag">Firebase</span> <span class="tag blue">Firestore</span>
+      </p>
+      <p>
+        <strong><a href="https://firebase.google.com/docs/firestore" target="_blank">Firestore</a></strong>とは、Googleが提供するクラウドプラットフォーム「<a href="https://firebase.google.com/" target="_blank">Firebase</a>」のサービスの一つです。
+        NoSQLデータベースであり、クライアントとサーバー間でリアルタイム同期が可能という大きな特徴があります。
+        無料枠（Sparkプラン）でも十分に学習・プロトタイピングが可能です。
+      </p>
+
+      <h4>簡単なサンプル &mdash; 35行で作れるリアルタイムチャットアプリ</h4>
+      <p>以下のコードは、Firestoreを使ったリアルタイムチャットアプリの全体像です。Colab notebookからも実行できます。</p>
+
+      <pre><code>&lt;h3&gt;Firebase Chat (Firestore)&lt;/h3&gt;
+&lt;div id=m&gt;&lt;/div&gt;
+&lt;input id=n placeholder="name"&gt;
+&lt;input id=t placeholder="message"&gt;
+&lt;button onclick="send()"&gt;Send&lt;/button&gt;
+&lt;script type=module&gt;
+  import {initializeApp} from
+    "https://www.gstatic.com/firebasejs/11.3.0/firebase-app.js";
+  import {getFirestore,collection,addDoc,
+    serverTimestamp,onSnapshot,query,orderBy}
+    from "https://www.gstatic.com/firebasejs/11.3.0/firebase-firestore.js";
+
+  const app=initializeApp({
+    apiKey:"YOUR_API_KEY",
+    authDomain:"YOUR_PROJECT.firebaseapp.com",
+    projectId:"YOUR_PROJECT"
+  });
+  const db=getFirestore(app);
+  const q=query(collection(db,"messages"),orderBy("ts","asc"));
+
+  onSnapshot(q, s=&gt;{
+    document.getElementById("m").innerHTML="";
+    s.forEach(d=&gt;{
+      let x=d.data();
+      document.getElementById("m").innerHTML+=
+        `&lt;div&gt;&lt;b&gt;${x.user||"anon"}&lt;/b&gt;: ${x.text||""}&lt;/div&gt;`;
+    });
+  });
+
+  window.send=async()=&gt;{
+    const name=document.getElementById("n").value||"anon";
+    const text=document.getElementById("t").value;
+    if(!text)return;
+    await addDoc(collection(db,"messages"),
+      {user:name, text, ts:serverTimestamp()});
+    document.getElementById("t").value="";
+  };
+&lt;/script&gt;</code></pre>
+
+    </section>
+  </div>
+
+  <!-- ======== Page 3: ポイント + Firestore設定 + v0チャットアプリ ======== -->
+  <div class="page">
+    <section>
+      <div class="callout info">
+        <p class="callout-title">ポイント</p>
+        <p>
+          <code>onSnapshot</code>がリアルタイム同期の要です。データベースに変更があると自動的にコールバックが呼ばれ、画面が更新されます。
+          <code>addDoc</code>でドキュメントを追加すると、接続中の全クライアントに即座に反映されます。
+        </p>
+      </div>
+
+      <h3>Firestoreをプロジェクトに追加する</h3>
+
+      <h4>アクセスキーの取得</h4>
+      <ol class="steps">
+        <li><a href="https://console.firebase.google.com/" target="_blank">Firebaseコンソール</a>で <strong>Project Overview</strong> &gt; <strong>Project Settings</strong> &gt; <strong>General</strong> を開く</li>
+        <li>「マイアプリ」セクションからAPIキーを含む設定コード(<code>firebaseConfig</code>)をコピーする</li>
+      </ol>
+
+      <div class="callout info">
+        <p class="callout-title">APIキーの安全性について</p>
+        <p>
+          FirebaseのAPIキーは不正操作が制限されているため、ユーザー(ブラウザ)に渡しても安全です。
+          サーバーサイドで利用する場合は<strong>ServiceAccount</strong>の利用を検討してください。
+          このキーで全Firebaseの機能(認証、ストレージ等)にアクセスできます。
+        </p>
+      </div>
+
+      <h3>v0でリアルタイムチャットアプリを作る</h3>
+
+      <ol class="steps">
+        <li>v0に「<strong>ログイン不要で使える、リアルタイムチャットアプリを作って</strong>」と指示し、先ほどコピーしたAPIキーの設定コードを貼り付ける</li>
+        <li>APIキーに関する警告が出るが、Firebaseのキーはセキュリティリスクが低いため<strong>OK</strong>で進める</li>
+        <li><strong>Publish</strong>してアプリを公開し、複数タブで開いてリアルタイム同期を確認する</li>
+      </ol>
+    </section>
+  </div>
+
+  <!-- ======== Page 4: トラブルシューティング + AI機能 ======== -->
+  <div class="page">
+    <section>
+      <h4>上手く動かない場合は?</h4>
+      <ol class="steps">
+        <li><strong>ログを確認</strong>: ブラウザの開発者ツールでConsoleを開き、エラーメッセージを確認する</li>
+        <li><strong>コストを意識した質問</strong>: v0のリクエストは高額なので、まず<strong>ChatGPT</strong>にエラー内容を質問する。納得できる回答を得てからv0に頼む</li>
+        <li><strong>コードを手動で編集</strong>: v0のエディタに切り替え、ChatGPTに相談しながら手動でコードを修正する</li>
+      </ol>
+
+      <div class="callout tip">
+        <p class="callout-title">トラブルシューティングのコツ</p>
+        <p>エラーメッセージをそのままコピーしてChatGPTに貼り付けるのが最も効率的です。状況説明を加えると、より的確な回答が得られます。</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>3. AI機能を組み込む</h2>
+
+      <h3>AI機能を持ったアプリを作成する</h3>
+      <p>
+        <span class="tag">ChatGPT API</span> <span class="tag green">AI</span>
+      </p>
+      <p>
+        AI機能を組み込むには、各社が提供するAPIを利用します。代表的なものとして
+        <a href="https://platform.openai.com/" target="_blank">OpenAI API</a>（ChatGPT）、
+        <a href="https://ai.google.dev/" target="_blank">Gemini API</a>（Google）、
+        <a href="https://docs.anthropic.com/en/docs/" target="_blank">Claude API</a>（Anthropic）があります。
+        今回は OpenAI API を使った例を紹介します。
+      </p>
+
+      <ol class="steps">
+        <li>v0に「<strong>Vercel AI SDKを使わず、ChatGPT APIを使って、AIチャットアプリを作って</strong>」とお願いする</li>
+        <li><strong>Add Environment Variables</strong>のダイアログが表示されたら、<a href="https://platform.openai.com/" target="_blank">OpenAI</a>のAPIキーを入力する</li>
+        <li>動作確認: メッセージを送信すると、AIが返事をしてくれることを確認する</li>
+      </ol>
+
+      <div class="callout warning">
+        <p class="callout-title">APIキーの取り扱い</p>
+        <p>OpenAI APIキーは環境変数として設定し、コード内にハードコーディングしないでください。<a href="https://vercel.com/" target="_blank">Vercel</a>の環境変数機能を使うことで、安全にキーを管理できます。</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- ======== Page 5: 任意セクション + 課題 ======== -->
+  <div class="page">
+    <section>
+      <h3>[任意] 自分で学習させたAIでリアルタイム画像認識</h3>
+      <p>
+        <span class="tag">Teachable Machine</span> <span class="tag blue">画像認識</span>
+      </p>
+      <p>
+        Googleが提供する無料のAI学習サービス「<strong>Teachable Machine</strong>」を使って、
+        独自のジェスチャー認識モデルを作成し、アプリに組み込むことができます。
+      </p>
+
+      <ol class="steps">
+        <li><a href="https://teachablemachine.withgoogle.com/" target="_blank">Teachable Machine</a>を開き、<strong>Image Project</strong> &gt; <strong>Standard Project</strong> を選択する</li>
+        <li>Webcamを使い、<strong>Hold to Record</strong>で各クラスの学習画像を収集する(例: グー、チョキ、パー)</li>
+        <li><strong>Train Model</strong>ボタンを押して学習を実行する</li>
+        <li><strong>Export Model</strong> &gt; <strong>Upload my model</strong> を選択し、生成されたコードをコピーする</li>
+        <li>v0で「<strong>ジェスチャーを認識するアプリを作って</strong>」と入力し、コピーしたコードを貼り付ける</li>
+      </ol>
+    </section>
+
+    <div class="task-box">
+      <h3>今週の課題</h3>
+      <ul>
+        <li>データベースやAIを必要に応じて用いて、企画書のアイデアを形にして提出しよう</li>
+        <li>OpenAI APIの<a href="https://platform.openai.com/docs/api-reference" target="_blank">公式リファレンス</a>を読んで、自分なりのまとめをNotionかGoogle Docsに書いて提出しよう</li>
+      </ul>
+      <p class="text-small text-muted"><strong>提出方法:</strong> 課題提出チャンネルにてURL共有</p>
+    </div>
+  </div>
+
+  <!-- ======== Page 6: Appendix 学習リソース ======== -->
+  <div class="page">
+    <section class="appendix">
+      <h2>Appendix: もっと知りたい人へ</h2>
+
+      <h3>学習リソース</h3>
+      <div class="two-col">
+        <div>
+          <h4>クラウド・データベース</h4>
+          <ul>
+            <li><a href="https://firebase.google.com/docs" target="_blank">Firebase公式ドキュメント</a></li>
+            <li><a href="https://firebase.google.com/docs/firestore" target="_blank">Firestore クイックスタート</a></li>
+            <li><a href="https://supabase.com/" target="_blank">Supabase (SQL系)</a></li>
+            <li><a href="https://cloud.google.com/docs" target="_blank">Google Cloudの基礎</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>デプロイ・ホスティング</h4>
+          <ul>
+            <li><a href="https://pages.github.com/" target="_blank">GitHub Pages</a></li>
+            <li><a href="https://vercel.com/" target="_blank">Vercel</a></li>
+            <li><a href="https://nextjs.org/" target="_blank">Next.js</a></li>
+            <li><a href="https://cloud.google.com/run" target="_blank">Cloud Run</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div>
+          <h4>AI関連</h4>
+          <ul>
+            <li><a href="https://huggingface.co/" target="_blank">HuggingFace</a></li>
+            <li><a href="https://mediapipe.dev/" target="_blank">Mediapipe</a></li>
+            <li><a href="https://teachablemachine.withgoogle.com/" target="_blank">Teachable Machine</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>API・リファレンス</h4>
+          <ul>
+            <li><a href="https://platform.openai.com/docs/api-reference" target="_blank">OpenAI API Reference</a></li>
+            <li><a href="https://ai.google.dev/" target="_blank">Gemini API (Google AI)</a></li>
+            <li><a href="https://docs.anthropic.com/en/docs/" target="_blank">Claude API (Anthropic)</a></li>
+            <li><a href="https://firebase.google.com/docs/firestore" target="_blank">Firestore ガイド</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ======== Page 7: 用語解説 + Footer ======== -->
+  <div class="page">
+    <section class="appendix">
+      <h3>用語解説</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>用語</th>
+            <th>説明</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>データベース</td>
+            <td>データを構造化して保存・管理するシステム。アプリケーションの情報を永続化するために使用する。</td>
+          </tr>
+          <tr>
+            <td>AI (人工知能)</td>
+            <td>人間の知的能力をコンピュータで模倣する技術の総称。テキスト生成、画像認識などに応用される。</td>
+          </tr>
+          <tr>
+            <td>JSON</td>
+            <td>JavaScript Object Notationの略。軽量なデータ交換フォーマットで、NoSQLデータベースのデータ構造としても使われる。</td>
+          </tr>
+          <tr>
+            <td>NoSQL</td>
+            <td>SQLを使わないデータベースの総称。ドキュメント型・キーバリュー型など多様な形式があり、柔軟なスキーマが特徴。</td>
+          </tr>
+          <tr>
+            <td>生成AI</td>
+            <td>テキスト・画像・音声などのコンテンツを生成できるAI。ChatGPTやDALL-Eなどが代表例。</td>
+          </tr>
+          <tr>
+            <td>ダッシュボード</td>
+            <td>FirebaseコンソールやVercelの管理画面など、サービスの状態を一覧・管理するためのWebインターフェース。</td>
+          </tr>
+          <tr>
+            <td>ServiceAccount</td>
+            <td>サーバーサイドからFirebase等に接続するための認証情報。管理者権限を持つため厳重に管理する必要がある。</td>
+          </tr>
+          <tr>
+            <td>リアルタイムデータベース</td>
+            <td>データの変更が接続中の全クライアントに即座に反映されるデータベース。Firestoreの主要機能の一つ。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer class="doc-footer">
+      <p>&copy; 2026 OLIENT TECH Inc. All rights reserved.</p>
+      <p>本資料は実践教育プログラム 2026 Spring の受講者向けに作成されたものです。</p>
+    </footer>
+  </div>
+
+  </div><!-- .doc-body.paged -->
+
+  <script src="pdf-export.js"></script>
+
+</body>
+</html>

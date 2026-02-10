@@ -1,0 +1,1085 @@
+/* ============================================
+   OLIENT TECH 実践教育プログラム 2026 Spring
+   A4 Lecture Document Stylesheet v3.0
+   ============================================ */
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-primary: #0f172a;
+  --color-accent: #2563eb;
+  --color-accent-light: #eff6ff;
+  --color-link: #1d4ed8;
+  --color-bg: #ffffff;
+  --color-text: #1e293b;
+  --color-text-light: #64748b;
+  --color-border: #e2e8f0;
+  --color-code-bg: #f1f5f9;
+  --color-section-bg: #f8fafc;
+  --color-highlight: #fef9c3;
+  --color-paper: #ffffff;
+  --color-cat-a: #78716c;
+  --color-cat-b: #2563eb;
+  --color-cat-c: #7c3aed;
+  --color-cat-d: #0d9488;
+  --color-cat-e: #ea580c;
+  --font-sans: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", "Meiryo", sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", "Source Code Pro", "Consolas", monospace;
+  --radius-default: 8px;
+}
+
+@page {
+  size: A4 portrait;
+  margin: 18mm 16mm 22mm 16mm;
+}
+
+@page :first {
+  margin: 0;
+}
+
+html {
+  font-size: 10pt;
+  line-height: 1.85;
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  max-width: 210mm;
+  margin: 0 auto;
+  padding: 0;
+}
+
+@media screen {
+  html {
+    background: #e8e8e8;
+  }
+
+  body {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 0;
+    background: transparent;
+  }
+}
+
+/* ============================================
+   VIEWER BAR (screen only)
+   ============================================ */
+.viewer-bar {
+  display: none;
+}
+
+@media screen {
+  .viewer-bar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 10000;
+    background: rgba(15, 23, 42, 0.95);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    color: #ffffff;
+    padding: 16px 32px;
+    font-size: 11pt;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  }
+
+  .viewer-bar .viewer-logo {
+    font-weight: 800;
+    font-size: 11pt;
+    letter-spacing: 1.5px;
+    opacity: 0.95;
+    white-space: nowrap;
+  }
+
+  .viewer-bar .viewer-sep {
+    width: 1px;
+    height: 22px;
+    background: rgba(255, 255, 255, 0.18);
+    flex-shrink: 0;
+  }
+
+  .viewer-bar .viewer-title {
+    font-weight: 700;
+    font-size: 12pt;
+    opacity: 0.9;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: 0.5px;
+  }
+
+  .viewer-bar .viewer-week,
+  .viewer-bar .viewer-meta {
+    font-size: 9pt;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.45;
+    white-space: nowrap;
+  }
+
+  .viewer-pdf-btn {
+    margin-left: auto;
+    background: var(--color-accent);
+    color: #fff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 24px;
+    font-size: 10pt;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35);
+  }
+
+  .viewer-pdf-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.45);
+  }
+
+  .viewer-pdf-btn:active {
+    transform: translateY(0);
+  }
+
+  body:has(.viewer-bar) {
+    padding-top: 60px;
+  }
+}
+
+@media print {
+  .viewer-bar {
+    display: none !important;
+  }
+}
+
+/* ============================================
+   COVER PAGE
+   ============================================ */
+.cover-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  page-break-after: always;
+}
+
+.cover-page .cover-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.cover-page .cover-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cover-page .cover-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.05) 0%,
+    rgba(0, 0, 0, 0.15) 40%,
+    rgba(0, 0, 0, 0.65) 75%,
+    rgba(0, 0, 0, 0.85) 100%
+  );
+}
+
+.cover-page .cover-content {
+  position: relative;
+  z-index: 2;
+  padding: 48px 40px 56px;
+  color: #ffffff;
+}
+
+.cover-page .cover-program {
+  font-size: 8.5pt;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-bottom: 16px;
+  font-weight: 400;
+}
+
+.cover-page .cover-week {
+  display: inline-block;
+  font-size: 9pt;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 4px 16px;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.cover-page .cover-title {
+  font-size: 28pt;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 14px;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+}
+
+.cover-page .cover-subtitle {
+  font-size: 11pt;
+  font-weight: 400;
+  line-height: 1.7;
+  opacity: 0.85;
+  max-width: 480px;
+  margin-bottom: 32px;
+}
+
+.cover-page .cover-meta {
+  font-size: 9pt;
+  opacity: 0.6;
+  border-top: 1px solid rgba(255,255,255,0.25);
+  padding-top: 16px;
+}
+
+.cover-page .cover-meta span {
+  margin-right: 20px;
+}
+
+@media print {
+  .cover-page {
+    min-height: auto;
+    height: 297mm;
+    margin: -18mm -16mm 0;
+    width: calc(100% + 32mm);
+    padding: 0;
+  }
+}
+
+@media screen {
+  .cover-page {
+    min-height: 1122px; /* approx A4 at 96dpi */
+    border-radius: 0;
+    margin-bottom: 32px;
+  }
+}
+
+/* ============================================
+   DOCUMENT BODY (after cover) — Paper Look
+   ============================================ */
+.doc-body {
+  padding: 36px 32px 40px;
+}
+
+@media screen {
+  .doc-body {
+    background: var(--color-paper);
+    padding: 56px 48px 64px;
+    border-radius: 0;
+    box-shadow:
+      0 4px 24px rgba(0, 0, 0, 0.12),
+      0 1px 4px rgba(0, 0, 0, 0.06);
+    margin-bottom: 48px;
+    position: relative;
+  }
+
+  /* Subtle paper grain texture */
+  .doc-body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.015'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .doc-body > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+@media print {
+  .doc-body {
+    padding: 0;
+  }
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+h1, h2, h3, h4, h5 {
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.4;
+}
+
+h1 {
+  font-size: 20pt;
+  margin-bottom: 4px;
+  letter-spacing: -0.5px;
+}
+
+h2 {
+  font-size: 15pt;
+  font-weight: 800;
+  margin-top: 36px;
+  margin-bottom: 18px;
+  padding: 14px 20px;
+  background: #eef2ff;
+  border-left: 4px solid var(--color-accent);
+  border-bottom: none;
+  border-radius: 0 var(--radius-default) var(--radius-default) 0;
+}
+
+h3 {
+  font-size: 11.5pt;
+  margin-top: 22px;
+  margin-bottom: 8px;
+  color: #334155;
+}
+
+h4 {
+  font-size: 10.5pt;
+  margin-top: 16px;
+  margin-bottom: 6px;
+}
+
+p {
+  margin-bottom: 10px;
+  text-align: justify;
+  word-break: break-all;
+  overflow-wrap: break-word;
+}
+
+strong {
+  color: var(--color-primary);
+}
+
+/* --- Horizontal Rule --- */
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 24px 0;
+}
+
+/* ============================================
+   DOCUMENT HEADER (in-body, after cover)
+   Full-width dark banner — bleeds to .page edges
+   ============================================ */
+.doc-header {
+  margin: -68px -60px 24px -60px;
+  padding: 36px 60px 28px;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  color: #ffffff;
+  page-break-after: avoid;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+/* Bottom accent stripe */
+.doc-header::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #2563eb 0%, #60a5fa 50%, #2563eb 100%);
+}
+
+/* Decorative circle */
+.doc-header::after {
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: 40px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.doc-header .program-label {
+  font-size: 8pt;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.doc-header h1 {
+  font-size: 24pt;
+  margin-bottom: 12px;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.doc-header .subtitle {
+  font-size: 10.5pt;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 400;
+  line-height: 1.7;
+  max-width: 600px;
+}
+
+.doc-header .meta {
+  margin-top: 18px;
+  font-size: 8.5pt;
+  color: rgba(255, 255, 255, 0.38);
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.doc-header .meta span {
+  display: inline-block;
+  margin: 0 8px;
+}
+
+.doc-header .meta span:first-child {
+  margin-left: 0;
+}
+
+/* ============================================
+   SECTIONS
+   ============================================ */
+section {
+  margin-bottom: 28px;
+}
+
+section.page-break {
+  page-break-before: always;
+}
+
+/* ============================================
+   LISTS
+   ============================================ */
+ul, ol {
+  margin: 6px 0 12px 20px;
+}
+
+li {
+  margin-bottom: 3px;
+}
+
+li > ul, li > ol {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+/* ============================================
+   CALLOUT / INFO BOX
+   ============================================ */
+.callout {
+  background: var(--color-section-bg);
+  border-left: 5px solid var(--color-accent);
+  padding: 14px 18px;
+  margin: 16px 0;
+  border-radius: 0 var(--radius-default) var(--radius-default) 0;
+  font-size: 9.5pt;
+}
+
+.callout.info {
+  border-left-color: #3b82f6;
+  background: #eff6ff;
+}
+
+.callout.warning {
+  border-left-color: #f59e0b;
+  background: #fefce8;
+}
+
+.callout.tip {
+  border-left-color: #10b981;
+  background: #ecfdf5;
+}
+
+.callout-title {
+  font-weight: 700;
+  font-size: 9.5pt;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ============================================
+   TABLES
+   ============================================ */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 9pt;
+  border-radius: var(--radius-default);
+  overflow: hidden;
+}
+
+th, td {
+  border: 1px solid var(--color-border);
+  padding: 8px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: var(--color-primary);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 8.5pt;
+  letter-spacing: 0.8px;
+}
+
+tr:nth-child(even) {
+  background: var(--color-section-bg);
+}
+
+/* ============================================
+   CODE
+   ============================================ */
+code {
+  font-family: var(--font-mono);
+  font-size: 8.5pt;
+  background: var(--color-code-bg);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #7c3aed;
+  border: 1px solid #eee;
+}
+
+pre {
+  background: #1e1e2e;
+  color: #cdd6f4;
+  border: none;
+  border-radius: 10px;
+  padding: 16px 24px;
+  overflow-x: auto;
+  margin: 16px 0;
+  font-size: 8.5pt;
+  line-height: 1.5;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  position: relative;
+}
+
+pre::before {
+  content: "CODE";
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-family: var(--font-sans);
+  font-size: 6.5pt;
+  letter-spacing: 1.5px;
+  color: rgba(205, 214, 244, 0.3);
+  padding: 4px 12px;
+  font-weight: 600;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  color: #cdd6f4;
+  border: none;
+  font-size: 8.5pt;
+}
+
+/* ============================================
+   LINKS
+   ============================================ */
+a {
+  color: var(--color-link);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--color-link);
+  transition: color 0.2s ease, border-bottom-color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+  border-bottom-style: solid;
+}
+
+@media print {
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 7.5pt;
+    color: var(--color-text-light);
+    word-break: break-all;
+  }
+  a[href^="#"]::after {
+    content: "";
+  }
+}
+
+/* ============================================
+   STEPS / PROCEDURE
+   ============================================ */
+.steps {
+  counter-reset: step-counter;
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.steps li {
+  counter-increment: step-counter;
+  padding: 8px 14px 8px 36px;
+  position: relative;
+  margin-bottom: 4px;
+  background: none;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 9.5pt;
+}
+
+.steps li:last-child {
+  border-bottom: none;
+}
+
+.steps li::before {
+  content: counter(step-counter) ".";
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  font-weight: 600;
+  font-size: 9pt;
+  color: var(--color-text-light);
+}
+
+/* ============================================
+   TAG / BADGE
+   ============================================ */
+.tag {
+  display: inline-block;
+  background: var(--color-accent-light);
+  color: var(--color-accent);
+  font-size: 8pt;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 12px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+.tag.blue {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.tag.green {
+  background: #d1fae5;
+  color: #047857;
+}
+
+.tag.purple {
+  background: #ede9fe;
+  color: #6d28d9;
+}
+
+/* ============================================
+   TASK / ASSIGNMENT BOX
+   ============================================ */
+.task-box {
+  border: 2.5px solid var(--color-accent);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin: 28px 0;
+  background: linear-gradient(135deg, #eff6ff 0%, #fff 100%);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.1);
+  position: relative;
+}
+
+.task-box::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 20px;
+  right: 20px;
+  height: 3px;
+  background: var(--color-accent);
+  border-radius: 0 0 3px 3px;
+}
+
+.task-box h3 {
+  color: var(--color-accent);
+  margin-top: 0;
+  font-size: 11pt;
+}
+
+.task-box ul {
+  margin-bottom: 8px;
+}
+
+/* ============================================
+   TWO COLUMN LAYOUT
+   ============================================ */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 12px 0;
+}
+
+.two-col > div {
+  padding: 14px 16px;
+  background: var(--color-section-bg);
+  border-radius: var(--radius-default);
+  border: 1px solid var(--color-border);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+@media screen {
+  .two-col > div:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+  }
+}
+
+@media print {
+  .two-col {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .two-col > div {
+    box-shadow: none;
+    transform: none;
+  }
+}
+
+/* ============================================
+   REFERENCE CASE CARDS
+   ============================================ */
+.ref-case {
+  background: linear-gradient(135deg, #f8fafc 0%, #fff 100%);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-link);
+  border-radius: 0 var(--radius-default) var(--radius-default) 0;
+  padding: 12px 16px;
+  margin: 12px 0;
+  font-size: 9.5pt;
+  transition: box-shadow 0.25s ease;
+}
+
+@media screen {
+  .ref-case:hover {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+}
+
+.ref-case p {
+  margin-bottom: 4px;
+}
+
+.ref-case p:last-child {
+  margin-bottom: 0;
+}
+
+.ref-label {
+  font-size: 8pt;
+  font-weight: 700;
+  color: var(--color-link);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+/* ============================================
+   APPENDIX
+   ============================================ */
+.appendix {
+  margin-top: 28px;
+  padding-top: 14px;
+  border-top: 1.5px dashed var(--color-border);
+}
+
+.appendix h2 {
+  color: var(--color-text-light);
+  background: var(--color-section-bg);
+  border-left-color: var(--color-border);
+  font-size: 12pt;
+}
+
+/* appendix h2 has no ::after since h2::after was removed */
+
+/* ============================================
+   CATEGORY SECTIONS (Appendix field cards)
+   ============================================ */
+.category-section {
+  margin: 32px 0;
+  padding: 0;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-top: 5px solid var(--color-border);
+  border-radius: var(--radius-default);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.category-section .category-header h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+  background: transparent;
+  border-left: none;
+  border-radius: 0;
+  padding: 16px 20px;
+}
+
+/* category h2 has no ::after since h2::after was removed */
+
+/* Category border-top accents (base styles, overridable by inline CSS) */
+.category-section.cat-a { border-top-color: var(--color-cat-a); }
+.category-section.cat-b { border-top-color: var(--color-cat-b); }
+.category-section.cat-c { border-top-color: var(--color-cat-c); }
+.category-section.cat-d { border-top-color: var(--color-cat-d); }
+.category-section.cat-e { border-top-color: var(--color-cat-e); }
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.doc-footer {
+  margin-top: 36px;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-border);
+  font-size: 7.5pt;
+  color: var(--color-text-light);
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* ============================================
+   PRINT SPECIFICS
+   ============================================ */
+@media print {
+  body {
+    padding: 0;
+    box-shadow: none;
+    margin: 0;
+    max-width: none;
+    background: #fff;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  h2, h3, h4 {
+    page-break-after: avoid;
+  }
+
+  table, pre, .callout, .task-box, .steps li {
+    page-break-inside: avoid;
+  }
+
+  .two-col {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  /* Remove screen-only decorative effects for clean print */
+  .doc-body {
+    box-shadow: none;
+    border-radius: 0;
+    background: #fff;
+  }
+
+  .doc-body::before {
+    display: none;
+  }
+
+  .task-box {
+    box-shadow: none;
+  }
+
+  .task-box::before {
+    display: none;
+  }
+
+  .category-section {
+    box-shadow: none;
+    border-top-width: 5px;
+  }
+
+  pre {
+    box-shadow: none;
+  }
+
+  pre::before {
+    display: none;
+  }
+
+  .doc-header {
+    margin: 0 0 14px 0;
+    padding: 20px 24px;
+    border-radius: 0;
+  }
+
+  .doc-header::after {
+    display: none;
+  }
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+.text-center { text-align: center; }
+.text-small { font-size: 9pt; }
+.text-muted { color: var(--color-text-light); }
+.text-accent { color: var(--color-accent); }
+.mt-0 { margin-top: 0; }
+.mb-0 { margin-bottom: 0; }
+.bold { font-weight: 700; }
+.nowrap { white-space: nowrap; }
+
+/* ============================================
+   PAGE BREAK — legacy (for non-paged layouts)
+   ============================================ */
+@media screen {
+  section.page-break {
+    position: relative;
+    margin-top: 48px;
+    padding-top: 32px;
+  }
+
+  section.page-break::before {
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--color-border);
+  }
+}
+
+/* ============================================
+   PAGED LAYOUT — Strict A4 page containers
+   ============================================
+   Each .page is exactly one A4 page (210×297mm).
+   Content MUST fit within the page's content area.
+   Screen: A4-sized paper sheets stacked vertically.
+   Print : Each .page starts on a new physical page.
+   ============================================ */
+
+/* --- doc-body becomes transparent when paged --- */
+@media screen {
+  .doc-body.paged {
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 32px 0 !important;
+    max-width: none !important;
+  }
+
+  .doc-body.paged::before {
+    display: none !important;
+  }
+}
+
+@media print {
+  .doc-body.paged {
+    padding: 0;
+  }
+}
+
+/* --- Individual A4 page --- */
+.page {
+  box-sizing: border-box;
+}
+
+@media screen {
+  .page {
+    /* Strict A4 dimensions @ 96 DPI */
+    width: 794px;           /* 210mm */
+    height: 1123px;         /* 297mm */
+    /* Margins matching @page rule: 18mm 16mm 22mm 16mm */
+    padding: 68px 60px 83px 60px;
+    margin: 0 auto 32px;
+    background: var(--color-paper);
+    border-radius: 0;
+    box-shadow:
+      0 4px 24px rgba(0, 0, 0, 0.12),
+      0 1px 4px rgba(0, 0, 0, 0.06);
+    position: relative;
+    overflow: hidden;
+    /* Create stacking context so ::before z-index:-1 stays within page,
+       and children don't need z-index (which can break border-radius clipping) */
+    isolation: isolate;
+  }
+
+  /* Paper grain texture */
+  .page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.015'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .page > * {
+    position: relative;
+  }
+}
+
+@media print {
+  .page {
+    page-break-before: always;
+    padding: 0;
+  }
+
+  .page:first-child {
+    page-break-before: auto;
+  }
+}
+
+/* --- Heading styles reset inside .page (no extra top margin on first heading) --- */
+.page > h2:first-child,
+.page > section:first-child > h2:first-child,
+.page > section:first-child > h3:first-child,
+.page > section:first-child > .callout:first-child,
+/* When doc-header is first child, section becomes second child — also reset */
+.page > .doc-header + section > h2:first-child {
+  margin-top: 0;
+}
+
+/* .page > header.doc-header specificity override removed —
+   base .doc-header already has the same negative margins,
+   and the higher specificity was preventing the @media print reset. */
+
+/* --- Appendix at top of page: remove unnecessary separator --- */
+.page > .appendix:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
